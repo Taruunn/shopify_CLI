@@ -3,7 +3,7 @@
 	{% if opt_l == "color" or opt_l == "colour" %}
 	      {% for val in opt.values %}
 	          <span class="color-swatch" 
-	                style="background-image:url({{val | append: ".jpg"}} | asset_img_url: "32x" );
+	                style="
 	                background-color: {{ val| split:" " | last }};"
                     >{{val}}</span>
 	      {% endfor %}
