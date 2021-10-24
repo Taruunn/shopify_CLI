@@ -1,0 +1,35 @@
+{% 
+unless grid_item_width
+assign grid_item_width = 'small--one medium--three full--four'
+endunless
+
+if product.compare_at_price > product.compare_at_price
+assign sale = true 
+endif 
+assign main_image = product.featured_media.preview_image
+      assign img_url = main_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.'
+%} 
+
+<div class="product-item {{ grid_item_width }}">
+                            <div class="product-meta">
+                                <div class="product-image">
+                              <img class="product__image lazyload"
+  src="{{ block.settings.image | img_url: '300x' }}"
+  data-src="{{ img_url }}"
+  data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+  data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+  data-sizes="auto"
+  data-parent-fit="cover"
+  alt="{{ block.settings.image.alt | escape }}">
+
+                                </div>
+                                <div class="product-des">
+                                    <div class="product-title">{{ product.title }}}</div>
+                                    <div class="product-price">{{ product.price }}</div>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
