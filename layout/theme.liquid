@@ -8,53 +8,36 @@
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
 
-  
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | img_url: '32x32' }}">
+    {%- endif -%}
+
+    {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
+      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {%- endunless -%}
 
     <title>
       {{ page_title }}
-      
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
     </title>
 
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
 
-<<<<<<< HEAD
-    
-
-    <!--Lazy Loading -->
-{{ "lazysizes.min.js" | asset_url | script_tag }}
-<style>
-.blur-up {
-		-webkit-filter: blur(5px);
-		filter: blur(5px);
-		transition: filter 400ms, -webkit-filter 400ms;
-	}
-
-	.blur-up.lazyloaded {
-		-webkit-filter: blur(0);
-		filter: blur(0);
-	}
-</style>
-
-
-=======
 
 
   
->>>>>>> 5776bc1f8ee6688b81aac11d086aa2c8e400e0d0
     {{ content_for_header }}
 
-    
     {% style %}
       :root {
         --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
-<<<<<<< HEAD
-        --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
-      }
-
-=======
       
         --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
      
->>>>>>> 5776bc1f8ee6688b81aac11d086aa2c8e400e0d0
       *,
       *::before,
       *::after {
@@ -67,13 +50,20 @@
         height: 100%;
       }
 
-
-<<<<<<< HEAD
+      body {
+        display: grid;
+        grid-template-rows: auto auto 1fr auto;
+        grid-template-columns: 100%;
+        min-height: 100%;
+        margin: 0;
+        font-size: 1.5rem;
+        letter-spacing: 0.06rem;
+        line-height: calc(1 + 0.8 / var(--font-body-scale));
+        font-family: var(--font-body-family);
+        font-style: var(--font-body-style);
+        font-weight: var(--font-body-weight);
       }
-    {% endstyle %}
 
- 
-=======
       
       }
     {% endstyle %}
@@ -86,26 +76,18 @@
     {%- unless settings.type_header_font.system? -%}
       <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
     {%- endunless -%}
->>>>>>> 5776bc1f8ee6688b81aac11d086aa2c8e400e0d0
 
    
   </head>
 
   <body class="gradient">
-<<<<<<< HEAD
-
-
-=======
    
->>>>>>> 5776bc1f8ee6688b81aac11d086aa2c8e400e0d0
-    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+    <main >
       {{ content_for_layout }}
     </main>
 
-    {% section 'footer' %}
 
-<<<<<<< HEAD
-=======
+
  
     <script>
       window.routes = {
@@ -132,6 +114,5 @@
     </script>
 
 
->>>>>>> 5776bc1f8ee6688b81aac11d086aa2c8e400e0d0
   </body>
 </html>
