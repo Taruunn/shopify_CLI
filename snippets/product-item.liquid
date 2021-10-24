@@ -13,7 +13,7 @@ endif
                             <div class="product-meta">
                                 <div class="product-image">
                                   
-                                {%- assign img_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                                {%- assign img_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' | strip  -%}
                                  
                               <img class="product__image lazyload" data-src="{{- img_url -}}" src="{{ product.featured_image | img_url: 'x600' }}"
    data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
