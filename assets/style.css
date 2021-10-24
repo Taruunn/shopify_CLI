@@ -16,7 +16,7 @@
 
     
     
-    
+   @media(min-width:1200px) {
     .full--four{ 
      width:calc(25% - 20px);
       margin:0 auto;
@@ -29,7 +29,7 @@
        width:calc(20% - 20px);
       margin:0 auto;
     }
-    
+   }
     @media(min-width:768px){
       .medium--three{
          width:calc(33% - 20px);
