@@ -1,5 +1,6 @@
 {% assign per_row = section.settings.per_row %}
 {% assign collection = collections[section.settings.featured_products] %}
+{% assign total_products = section.settings.total_product %}
 <div class="one-whole">
 <div class="main_section">
     <div class="container">
@@ -53,7 +54,7 @@
                     </div>
 
                     {% else %}
-                    {% for product in collections[section.settings.featured_products].products limit: product_count %}
+                    {% for product in collections[section.settings.featured_products].products limit: total_products %}
                   
                     {% render 'product-item', product:product, grid_item_width:grid_item_width,per_row:per_row %}
                   
