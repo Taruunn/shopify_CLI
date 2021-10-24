@@ -32,7 +32,20 @@ endif
                                     <div class="product-title">{{ product.title }}</div>
                                     <div class="product-price">{{ product.price | money }}</div>
                                 </div>
+ <form action="/cart/add" method="post" style="text-align:center;">
 
+    <select name="id" id="{{ product.handle }}" style="display: none;">
+    {% for variant in product.variants %}
+    {% if variant.available %}
+    <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>     
+    {% else %}
+    <option disabled="disabled">{{ variant.title }} - Sold Out</option>
+    {% endif %}
+    {% endfor %}
+    </select>          
+    <input type="submit" value="Add to cart" class="btn" />
+
+    </form>
 
                             </div>
 
