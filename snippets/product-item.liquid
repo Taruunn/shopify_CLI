@@ -14,15 +14,15 @@ endif
                                 <div class="product-image">
                                   {% liquid
                                   assign main_image = product.featured_image
-      assign img_url = main_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.'
+    							  assign img_url = main_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.'
                                   %}
                               <img class="product__image lazyload"
   data-src="{{ img_url }}"
   data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
-  data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+  data-aspectratio="{{ img_url.aspect_ratio }}"
   data-sizes="auto"
   data-parent-fit="cover"
-  alt="{{ block.settings.image.alt | escape }}">
+  alt="{{ img_url.alt | escape }}">
 
                                 </div>
                                 <div class="product-des">
