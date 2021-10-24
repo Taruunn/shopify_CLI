@@ -27,6 +27,20 @@
       <meta name="description" content="{{ page_description | escape }}">
     {% endif %}
 
+  <!--Lazy Loading -->
+{{ "lazysizes.min.js" | asset_url | script_tag }}
+<style>
+.blur-up {
+		-webkit-filter: blur(5px);
+		filter: blur(5px);
+		transition: filter 400ms, -webkit-filter 400ms;
+	}
+
+	.blur-up.lazyloaded {
+		-webkit-filter: blur(0);
+		filter: blur(0);
+	}
+</style>
 
 
   
@@ -88,30 +102,6 @@
 
 
 
- 
-    <script>
-      window.routes = {
-        cart_add_url: '{{ routes.cart_add_url }}',
-        cart_change_url: '{{ routes.cart_change_url }}',
-        cart_update_url: '{{ routes.cart_update_url }}',
-        predictive_search_url: '{{ routes.predictive_search_url }}'
-      };
-
-      window.cartStrings = {
-        error: `{{ 'sections.cart.cart_error' | t }}`,
-        quantityError: `{{ 'sections.cart.cart_quantity_error_html' | t }}`
-      }
-
-      window.variantStrings = {
-        addToCart: `{{ 'products.product.add_to_cart' | t }}`,
-        soldOut: `{{ 'products.product.sold_out' | t }}`,
-        unavailable: `{{ 'products.product.unavailable' | t }}`,
-      }
-
-      window.accessibilityStrings = {
-        shareSuccess: `{{ 'general.share.success_message' | t }}`,
-      }
-    </script>
 
 
   </body>
