@@ -15,7 +15,7 @@ endif
                                   
                                 {%- assign img_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
                                  
-                              <img class="product__image lazyload"data-src="{{ img_url }}" src="{{ product.featured_image | img_url: 'x600' }}"
+                              <img class="product__image lazyload" data-src="{{ img_url }}" src="{{ product.featured_image | img_url: 'x600' }}"
    data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
   data-aspectratio="{{ img_url.aspect_ratio }}"
    data-aspectratio="{{ product.featured_image.aspect_ratio }}"
