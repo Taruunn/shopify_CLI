@@ -15,13 +15,14 @@ endif
                                   
                               
                                   {%- assign preview_image = product.featured_image -%}
-  {%- assign img_url = preview_image | img_url: '1x1'  -%}
+  {%- assign img_url = preview_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
                                   
                               <img id="{{ img_id }}"
+                                          data-src="{{ img_url }}"
                                    src="{{ preview_image | img_url: '1x1' }}"
               class="grid-view-item__image lazyload"
               alt="{{ preview_image.alt }}"
-              data-src="{{- img_url -}}"
+       
               data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
               data-aspectratio="{{ preview_image.aspect_ratio }}"
               data-sizes="auto"
