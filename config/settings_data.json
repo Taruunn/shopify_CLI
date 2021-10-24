@@ -1,7 +1,17 @@
 {
   "current": {
+    "sections": {
+      "163507133360314ebf": {
+        "type": "Collections",
+        "settings": {
+          "title": "Featured collection",
+          "featured_products": "featured-collection",
+          "per_row": 3
+        }
+      }
+    },
     "content_for_index": [
-
+      "163507133360314ebf"
     ]
   },
   "presets": {
