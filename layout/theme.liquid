@@ -46,6 +46,15 @@
   
     {{ content_for_header }}
 
+    {% style %}
+     
+    
+    
+    :root{
+  --TitleFont : {{ settings.title__font }},{{ settings.title__font.fallback_families }};
+  --BodyFont : {{ settings.body__font }},{{ settings.body__font.fallback_families }} ;
+}
+    {% endstyle %}
     {%- unless settings.type_body_font.system? -%}
       <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
     {%- endunless -%}
@@ -59,6 +68,9 @@
     <main >
       {{ content_for_layout }}
     </main>
+
+
+
 
 
   </body>
