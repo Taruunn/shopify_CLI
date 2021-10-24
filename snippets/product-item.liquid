@@ -18,6 +18,7 @@ endif
   {%- assign img_url = preview_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
                                   
                               <img id="{{ img_id }}"
+                                   src="{{ preview_image | img_url: '1x1' }}"
               class="grid-view-item__image lazyload"
               alt="{{ preview_image.alt }}"
               data-src="{{- img_url -}}"
