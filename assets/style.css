@@ -13,3 +13,29 @@
     line-height: 1.6em;
     overflow: auto;
  }
+    
+    small--one medium--three full--four
+    
+    
+    
+    .full--four{ 
+     width:calc(25% - 20);
+      margin:0 auto;
+    }
+    
+    @media(min-width:768px){
+      .medium--three{
+         width:calc(33% - 20);
+      margin:0 auto;
+      }
+    }
+    
+    @media(max-width:767px){
+      .small--one{
+         width:calc(100% - 20);
+      margin:0 auto;
+      }
+    }
+    
+    
+    
