@@ -18,25 +18,25 @@
     
     
     .full--four{ 
-     width:calc(25% - 20);
+     width:calc(25% - 20px);
       margin:0 auto;
     }
     .full--three{
-       width:calc(33% - 20);
+       width:calc(33% - 20px);
       margin:0 auto;
     }
     .full--five{
-       width:calc(20% - 20);
+       width:calc(20% - 20px);
       margin:0 auto;
     }
     
     @media(min-width:768px){
       .medium--three{
-         width:calc(33% - 20);
+         width:calc(33% - 20px);
       margin:0 auto;
       }
       .medium--two{
-        width:calc(50% - 20);
+        width:calc(50% - 20px);
       margin:0 auto;
         
       }
@@ -44,7 +44,7 @@
     
     @media(max-width:767px){
       .small--one{
-         width:calc(100% - 20);
+         width:calc(100% - 20px);
       margin:0 auto;
       }
     }
