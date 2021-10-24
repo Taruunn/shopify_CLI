@@ -1,7 +1,4 @@
-:root{
-  --TitleFont : FontDrop;
-  --BodyFont : FontDrop ;
-}
+
     
  body{
    font-family:var(--BodyFont);
