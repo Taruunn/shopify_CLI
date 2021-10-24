@@ -16,6 +16,7 @@
     </title>
 
 
+<<<<<<< HEAD
     
 
     <!--Lazy Loading -->
@@ -34,21 +35,26 @@
 </style>
 
 
+=======
+
+
+  
+>>>>>>> 5776bc1f8ee6688b81aac11d086aa2c8e400e0d0
     {{ content_for_header }}
 
     
     {% style %}
-      {{ settings.type_body_font | font_face: font_display: 'swap' }}
-      {{ body_font_bold | font_face: font_display: 'swap' }}
-      {{ body_font_italic | font_face: font_display: 'swap' }}
-      {{ body_font_bold_italic | font_face: font_display: 'swap' }}
-      {{ settings.type_header_font | font_face: font_display: 'swap' }}
-
       :root {
         --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+<<<<<<< HEAD
         --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
       }
 
+=======
+      
+        --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+     
+>>>>>>> 5776bc1f8ee6688b81aac11d086aa2c8e400e0d0
       *,
       *::before,
       *::after {
@@ -62,22 +68,70 @@
       }
 
 
+<<<<<<< HEAD
       }
     {% endstyle %}
 
  
+=======
+      
+      }
+    {% endstyle %}
+
+
+
+    {%- unless settings.type_body_font.system? -%}
+      <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
+    {%- endunless -%}
+    {%- unless settings.type_header_font.system? -%}
+      <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
+    {%- endunless -%}
+>>>>>>> 5776bc1f8ee6688b81aac11d086aa2c8e400e0d0
 
    
   </head>
 
   <body class="gradient">
+<<<<<<< HEAD
 
 
+=======
+   
+>>>>>>> 5776bc1f8ee6688b81aac11d086aa2c8e400e0d0
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>
 
     {% section 'footer' %}
 
+<<<<<<< HEAD
+=======
+ 
+    <script>
+      window.routes = {
+        cart_add_url: '{{ routes.cart_add_url }}',
+        cart_change_url: '{{ routes.cart_change_url }}',
+        cart_update_url: '{{ routes.cart_update_url }}',
+        predictive_search_url: '{{ routes.predictive_search_url }}'
+      };
+
+      window.cartStrings = {
+        error: `{{ 'sections.cart.cart_error' | t }}`,
+        quantityError: `{{ 'sections.cart.cart_quantity_error_html' | t }}`
+      }
+
+      window.variantStrings = {
+        addToCart: `{{ 'products.product.add_to_cart' | t }}`,
+        soldOut: `{{ 'products.product.sold_out' | t }}`,
+        unavailable: `{{ 'products.product.unavailable' | t }}`,
+      }
+
+      window.accessibilityStrings = {
+        shareSuccess: `{{ 'general.share.success_message' | t }}`,
+      }
+    </script>
+
+
+>>>>>>> 5776bc1f8ee6688b81aac11d086aa2c8e400e0d0
   </body>
 </html>
