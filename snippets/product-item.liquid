@@ -6,13 +6,16 @@ endunless
 if product.compare_at_price > product.compare_at_price
 assign sale = true 
 endif 
-assign main_image = product.featured_image
-      assign img_url = main_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.'
+
 %} 
 
 <div class="product-item {{ grid_item_width }}">
                             <div class="product-meta">
                                 <div class="product-image">
+                                  {% liquid
+                                  assign main_image = product.featured_image
+      assign img_url = main_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.'
+                                  %}
                               <img class="product__image lazyload"
   data-src="{{ img_url }}"
   data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
