@@ -43,7 +43,9 @@ endif
 {{ variant.options[index] }}
 {% endcapture %}
       {% unless colorlist contains color %}
-                              <label style="background-color:{{colorlist}}"> </label>
+
+                              
+                               <label style="background-color:{{color}}"> </label>
         {% capture tempList %}
 {{colorlist | append: color | append: ' '}}
 {% endcapture %}
