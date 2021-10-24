@@ -8,7 +8,7 @@
         "settings": {
           "title": "Featured collection",
           "featured_products": "featured-collection",
-          "per_row": 3
+          "per_row": 2
         }
       }
     },
