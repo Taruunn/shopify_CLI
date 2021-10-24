@@ -46,12 +46,6 @@
   
     {{ content_for_header }}
 
-    {% style %}
-      :root {
-        --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
-        --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
-      }
-    {% endstyle %}
     {%- unless settings.type_body_font.system? -%}
       <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
     {%- endunless -%}
@@ -65,9 +59,6 @@
     <main >
       {{ content_for_layout }}
     </main>
-
-
-
 
 
   </body>
