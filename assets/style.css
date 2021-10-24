@@ -1,4 +1,8 @@
-
+ 
+    :root{
+  --TitleFont : Montserrat,sans-serif;
+  --BodyFont : Montserrat,sans-serif ;
+}
     
  body{
    font-family:var(--BodyFont);
