@@ -1,12 +1,97 @@
+{% assign per_row = section.settings.on_row %}
+{% assign collection = collections[section.settings.featured_products] %}
+
+<div class="main-section">
+    <div class="page-width">
+        <div class="section_header">
+            <h1> {{ section.settings.title}} </h1>
+        </div>
+        <div>
+            <div class="page-width">
+                <div class="flex_prducts">
+                    {% liquid
+                    
+                  assign grid_item_width = 'small--one medium--three full--four'
+                    
+                    case per_row
+                    when 1
+                    assign grid_item_width = ''
+                    when 2
+                    assign grid_item_width = 'small--one medium--two full--two'
+                    when 3
+                    assign grid_item_width = 'small--one medium--two full--three'
+                    when 4
+                    assign grid_item_width = 'small--one medium--two full--four'
+                    when 5
+                    assign grid_item_width = 'small--one medium--two full--five'
+
+                    endcase
+
+                    %}
+
+                    {% if section.settings.featured_products == blank or collections[section.settings.featured_products].empty? %}
+
+                    <div class="main-products-item">
+                        {% for i in (1..product_count) %}
+                        <div class="product-item {{ grid_item_width }}">
+                            <div class="product-meta">
+                                <div class="product-image">
+                                    {% render 'product-svg' %}
+
+                                </div>
+                                <div class="product-des">
+                                    <div class="product-title">Dummy Product</div>
+                                    <div class="product-price">$500</div>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    {% else %}
+                    {% for product in collections[section.settings.featured_products].products limit: product_count %}
+                  
+                    {% render 'product-item', product:product, grid_item_width:grid_item_width,per_row:per_row %}
+                  
+                    {% endfor %}
+                    {% endif %}
+
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+"name": "Featured collection",
+"class": "index-section",
+"settings": [
+{
+"type": "text",
+"id": "title",
+"label": "Heading",
+"default": "Featured collection"
+},
+{
+"type": "collection",
+"id": "featured_products",
+"label": "Collection"
+}
+],
+"presets": [{
+"name": "Featured collection"
+}],
+"blocks" : []
+}
+
 {% endschema %}
-
-{% stylesheet %}
-{% endstylesheet %}
-
-{% javascript %}
-{% endjavascript %}
