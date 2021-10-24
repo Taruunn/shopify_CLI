@@ -19,7 +19,7 @@
       {
         "type": "font_picker",
         "id": "body__font",
-        "label": "Title Font",
+        "label": "Body Font",
         "default": "open_sans_n4"
       }
     ]
