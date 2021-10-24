@@ -1,23 +1,25 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Dawn",
+    "theme_name": "test theme",
     "theme_version": "0",
-    "theme_author": "Shopify",
-    "theme_documentation_url": "https:\/\/help.shopify.com\/manual\/online-store\/themes\/os20\/themes-by-shopify\/dawn",
+    "theme_author": "Test Tarun",
+    "theme_documentation_url": "https:\/\/help.shopify.com",
     "theme_support_url": "https:\/\/support.shopify.com\/"
   },
   {
     "name": "Typography",
     "settings": [
       {
-        "type": "header",
-        "content": "Logo"
+        "type": "font_picker",
+        "id": "title__font",
+        "label": "Title Font",
+        "default": "open_sans_n4"
       },
       {
         "type": "font_picker",
-        "id": "logo__font",
-        "label": "Font",
+        "id": "body__font",
+        "label": "Title Font",
         "default": "open_sans_n4"
       }
     ]
