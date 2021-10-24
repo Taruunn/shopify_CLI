@@ -6,7 +6,7 @@ endunless
 if product.compare_at_price > product.compare_at_price
 assign sale = true 
 endif 
-assign main_image = product.featured_media.preview_image
+assign main_image = product.featured_image
       assign img_url = main_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.'
 %} 
 
