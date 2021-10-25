@@ -37,12 +37,14 @@
          }
       </style>
       {{ content_for_header }}
-      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" defer></script>
-      {%render 'Ajax-cart' %}
+     
    </head>
    <body >
+     {%render 'cart-drawer'%}
       <main >
          {{ content_for_layout }}
       </main>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" defer></script>
+      {%render 'Ajax-cart' %}
    </body>
 </html>
