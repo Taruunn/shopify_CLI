@@ -38,7 +38,7 @@
          <input type="radio"
          class="single-option-selector color-swatch js-radio-button {%if variant.available %}{%else%} hide {%endif%}"
        {% if variant.image %}
-                  data-variant-id="{{ variant.id }}"
+                 
                   data-variant-image="{{ variant.image | img_url: '400x' }}"
                 {% endif %}
          value="{{ value | escape }}"
