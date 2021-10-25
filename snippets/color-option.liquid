@@ -102,7 +102,7 @@
                                                data-index="option{{ option.position }}"
                                                value="{{ value | escape }}"
                                                data-color="{{ value | handleize }}"
-                                               {% if option.selected_value == value %}checked="checked"{% endif %}   data-variant-image="{{ variant.image | img_url: '400x' }}"
+                                               {% if option.selected_value == value %}checked="checked"{% endif %}  
                                                id="variant_{{ option-name }}-{{ product-handle }}-{{ forloop.index0 }}"/>
                                          
                                           <span class="swatch" style="background-color: {{ stripped-value }};"> </span>
