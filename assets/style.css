@@ -80,6 +80,9 @@
     cursor: pointer;
     font-family: inherit;
 }
+    form .flex_prducts {
+    justify-content: space-between;
+}
     .flex_prducts {
        display: -webkit-box;
     display: -ms-flexbox;
