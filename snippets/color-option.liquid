@@ -38,7 +38,7 @@
            class="single-option-selector color-swatch single-product-option-{{ option-name }}__input js-radio-button"
            data-single-option-selector
            {% if option.selected_value == value %}checked="checked"{% endif %}  
-           id="variant_{{ value }}-{{ product.handle }}-{{ forloop.index0 }}"/>
+           id="variant_{{ value }}-{{ product.handle }}-{{ forloop.index0 }}">
            <span class="swatch" style="background-color: {{ color_swatch_fallback }};"> </span>
            </label>
           
