@@ -15,9 +15,12 @@
           assign is_color = true
         endif
       -%}
+{%- endfor -%}
       {%- if is_color -%}
         {%- assign option_index = forloop.index0 -%}
         {%- assign values = '' -%}
+
+  
         <div class="Product-variants Product-variants-{{ product.id }}">
           {%- for variant in product.variants -%}
             {%- assign value = variant.options[option_index] -%}
@@ -49,4 +52,4 @@
           {%- endstyle -%}
         {%- endif -%}
       {%- endif -%}
-    {%- endfor -%}
+  
