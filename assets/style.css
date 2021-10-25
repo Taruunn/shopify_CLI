@@ -111,6 +111,9 @@
 
     border-radius: 100px;
 }
+   input[type="radio"].single-option-selector:checked + .swatch{
+    border:1px solid 
+  }
     
  .ajax-cart__drawer {
 	 transition: getTransition();
