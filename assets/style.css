@@ -98,6 +98,15 @@
     height: 1px;
     width: 1px;
 }
+     .Product-variants .color-swatch:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+}
 .Product-variants .color-swatch:before {
     border-width: 3px;
 }
@@ -114,12 +123,4 @@
     border-color: var( --mainColor);
  
 }
-   .Product-variants .color-swatch:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 2;
-}
+  
