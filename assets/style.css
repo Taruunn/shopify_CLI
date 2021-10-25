@@ -97,10 +97,10 @@
     height: 1px;
     width: 1px;
 }
-    .color-swatch--small:before {
+.color-swatch--small:before {
     border-width: 3px;
 }
- .color-swatch:before {
+.color-swatch--small:before {
     border-radius: 100%;
     border-width: 4px;
     top: -1px;
@@ -111,5 +111,5 @@
 .color-swatch--small:before {
     border: 2px solid;
     border-color: var( --mainColor);
-    border-color: var( --mainColor);
+ 
 }
