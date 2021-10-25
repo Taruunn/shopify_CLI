@@ -7,14 +7,8 @@
       <div class="js-single-product-option-{{ option-name }} single-product-option-{{ option-name }}"
          id="SingleOptionSelector-{{ forloop.index0 }}">
         {% for variant in product.variants %}
-    {%- assign value = variant.options[option_index_0] -%}
-      {%- liquid
-        assign product_available = true
-        if product.options.size == 1
-          assign product_available = product.variants[forloop.index0].available
-        endif
-      -%}
-         {% assign stripped-value = value | split: ' ' | last | handle %}
+   
+        
          {% if option-name contains 'color' or option-name contains 'colour' %}
          {% assign is_color = true %}
          {% endif %}
