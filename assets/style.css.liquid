@@ -103,18 +103,19 @@
      display:none; 
     }
    
- .color-option .swatch{
+.color-option input[type=radio]:checked+.swatch {
+    padding: 0px;
+    box-shadow: 0px 0px 0px 1px #000;
+}
+.color-option .swatch {
     display: inline-block;
     vertical-align: middle;
     height: 19px;
     width: 19px;
-
     border-radius: 100px;
+    border: 2px solid #fff;
+    box-shadow: 1px 1px 10px #c5c1c1;
 }
-  .color-option input[type="radio"]:checked + .swatch{
-    border:1px solid red
-  }
-    
  .ajax-cart__drawer {
 	 transition: getTransition();
 	 position: fixed;
