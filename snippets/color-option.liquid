@@ -1,9 +1,4 @@
 <form method="post" action="/cart/add" enctype="multipart/form-data" >
-   <!--product variants-->
-   {% unless product.has_only_default_variant %}
- 
-  
-  
   {%- liquid
       assign swatch_trigger = 'products.general.color_swatch_trigger' | t | downcase
       assign swatch_file_extension = 'png'
@@ -35,39 +30,34 @@
                 assign color_swatch_fallback = value | split: ' ' | last | handle
                 assign color_count = color_count | plus: 1
               -%}
-			  <label for="variant_{{ option-name }}-{{ product-handle }}-{{ forloop.index0 }}"
-            class="single-product-option-{{ option-name }}__label color-swatch {% if stripped-value contains 'white' %}single-product-option-{{ option-name }}__label--white{% endif %}"
-            >      
-         <input type="radio"
-         class="single-option-selector color-swatch single-product-option-{{ option-name }}__input js-radio-button"
-       {% if variant.image %}
+
+              <a
+                href="{{ variant.url | within: collection }}"
+                class="color-swatch color-swatch--small color-swatch--{{ value | handle }}{% if variant.image %} color-swatch--with-image{% endif %}"
+                {% if variant.image %}
                   data-variant-id="{{ variant.id }}"
                   data-variant-image="{{ variant.image | img_url: '400x' }}"
                 {% endif %}
-        checked="checked"  
-         id="variant_{{ option-name }}-{{ product-handle }}-{{ forloop.index0 }}"/>
-               <span class="swatch" style="background-color: {{ color_swatch_fallback }}"> </span>
-
-         </label>
-              
+                aria-label="{{ product.title }} - {{ value }}"
+                style="background-color: {{ color_swatch_fallback }};{% if images[color_file_name] != blank %}  background-image: url({{ color_image }});{% endif %}">
+                <span class="visually-hidden">{{ value }}</span>
+              </a>
             {%- endunless -%}
            {%- endfor -%}
         </div>
-    
+        {%- if color_count < 2 -%}
+          {%- style -%}
+            .grid-product__colors--{{ product.id }} {
+              display: none;
+            }
+          {%- endstyle -%}
+        {%- endif -%}
       {%- endif -%}
     {%- endfor -%}
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-   {% endunless %}
+ 
    <!--product add to cart-->
   <input type= "hidden"  name="id" min="1" value="{{ product.selected_or_first_available_variant.id }}" />
   <input type="hidden" id="quaninty" name="quantity" min="1" value="1" />
