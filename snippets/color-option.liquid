@@ -39,7 +39,7 @@
            data-single-option-selector
            {% if option.selected_value == value %}checked="checked"{% endif %}  
            id="variant_{{ value }}-{{ product.handle }}-{{ forloop.index0 }}">
-           <span class="swatch" style="background-color: {{ color_swatch_fallback }};"> </span>
+          
            </label>
           
           
@@ -69,7 +69,7 @@
             class="variant__button-label color-swatch color-swatch--{{ value | handle }}{% unless product_available %} disabled{% endunless %}"
             style="background-color: {{ color_swatch_fallback }};{% if images[color_file_name] != blank %}  background-image: url({{ color_image }});{% endif %}"
           >
-            
+             <span class="swatch" style="background-color: {{ color_swatch_fallback }};"> </span>
           </label>
        
         {%- endif -%}
