@@ -97,10 +97,10 @@
     height: 1px;
     width: 1px;
 }
-.color-swatch--small:before {
+.Product-variants .color-swatch:before {
     border-width: 3px;
 }
-.color-swatch--small:before {
+.Product-variants .color-swatch:before {
     border-radius: 100%;
     border-width: 4px;
     top: -1px;
@@ -108,7 +108,7 @@
     right: -1px;
     bottom: -1px;
 }
-.color-swatch--small:before {
+.Product-variants .color-swatch:before {
     border: 2px solid;
     border-color: var( --mainColor);
  
