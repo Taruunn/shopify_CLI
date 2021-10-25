@@ -66,7 +66,7 @@
 
                     {% for option in product.options_with_values %}
 
-                        <div class="single-product__option-wrapper js">
+                        <div class="single-product__option-wrapper js Product-variants">
 
                             {% assign option-name = option.name | downcase %}
 
@@ -92,7 +92,7 @@
                                        
 
                                         <label for="variant_{{ option-name }}-{{ product-handle }}-{{ forloop.index0 }}"
-                                               class="single-product-option-{{ option-name }}__label {% if stripped-value contains 'white' %}single-product-option-{{ option-name }}__label--white{% endif %}"
+                                               class="single-product-option-{{ option-name }}__label color-swatch {% if stripped-value contains 'white' %}single-product-option-{{ option-name }}__label--white{% endif %}"
                                                >      
                                           
                                           
