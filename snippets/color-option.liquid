@@ -125,7 +125,7 @@
                                          
                                           <span class="swatch"  {%- if text == 'white' -%}border: 1px solid #d1d1d1; {%- endif -%}
       
-          background-color: {{ color | split: ' ' | last | handle }};> </span>
+         style=" background-color: {{ color | split: ' ' | last | handle }};"> </span>
                                          
 								<input type= "hidden"  name="id" min="1" value="{{ product.variants.first.id }}" />
 								<input type="hidden" id="quaninty" name="quantity" min="1" value="1" />
