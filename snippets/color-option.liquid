@@ -32,13 +32,21 @@
               -%}
 
               <label for="variant_{{ option-name }}-{{ product-handle }}-{{ forloop.index0 }}"
-              class="single-product-option-{{ option-name }}__label color-swatch {% if stripped-value contains 'white' %}single-product-option-{{ option-name }}__label--white{% endif %}"
-              >      
-           <input type="radio" name="{{ option.name }}"
-           class="single-option-selector color-swatch single-product-option-{{ option-name }}__input js-radio-button"
-           data-single-option-selector
-           {% if option.selected_value == value %}checked="checked"{% endif %}  
-           id="variant_{{ value }}-{{ product.handle }}-{{ forloop.index0 }}"/>
+              class="single-product-option-{{ option-name }}__label color-swatch {% if stripped-value contains 'white' %}single-product-option-{{ option-name }}__label--white{% endif %}"?
+         
+                     <input type="radio"
+          form="{{ form_id }}"
+          {% if option.selected_value == value %} checked="checked"{% endif %}
+          value="{{ value | escape }}"
+          data-index="option{{ option_index }}"
+          name="{{ option.name }}"
+          data-variant-input
+          class="{% unless product_available %} disabled{% endunless %}{% if is_color %} variant__input--color-swatch{% endif %}"
+          {% if is_color %} data-color-name="{{ value | escape }}"{% endif %}
+          {% if is_color %} data-color-index="{{ color_option_index }}"{% endif %}
+          id="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}" data-preorder-dispatch="{{ product.metafields.Specs.Dispatch }}" data-preorder-quantity="20"
+ 			 data-variant-inventory-policy="{{ variant.inventory_policy }}" data-variant-quantity="{{variant.inventory_quantity}}" >
+          
            <span class="swatch" style="background-color: {{ color_swatch_fallback }};"> </span>
            </label>
           
