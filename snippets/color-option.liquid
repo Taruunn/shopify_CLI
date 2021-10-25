@@ -90,12 +90,12 @@
                                     {% if is_color %}
 
                                         <input type="radio" name="{{ option-name }}-{{ product-handle }}"
-                                               class="single-option-selector single-product-option-{{ option-name }}__input js-radio-button"
+                                               class="single-option-selector color-swatch single-product-option-{{ option-name }}__input js-radio-button"
                                                data-single-option-selector
                                                data-index="option{{ option.position }}"
                                                value="{{ value | escape }}"
                                                data-color="{{ value | handleize }}"
-                                               {% if option.selected_value == value %}checked="checked"{% endif %}
+                                               {% if option.selected_value == value %}checked="checked"{% endif %}   data-variant-image="{{ variant.image | img_url: '400x' }}"
                                                id="variant_{{ option-name }}-{{ product-handle }}-{{ forloop.index0 }}"/>
 
                                         <label for="variant_{{ option-name }}-{{ product-handle }}-{{ forloop.index0 }}"
