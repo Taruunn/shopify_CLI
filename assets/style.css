@@ -115,6 +115,7 @@
     border-radius: 100px;
     border: 2px solid #fff;
     box-shadow: 1px 1px 10px #c5c1c1;
+      cursor: pointer;
 }
  .ajax-cart__drawer {
 	 transition: getTransition();
