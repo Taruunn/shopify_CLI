@@ -32,10 +32,9 @@
               -%}
 
               <label for="variant_{{ option-name }}-{{ product-handle }}-{{ forloop.index0 }}"
-              class="single-product-option-{{ option-name }}__label color-swatch {% if stripped-value contains 'white' %}single-product-option-{{ option-name }}__label--white{% endif %}"?
+              class="single-product-option-{{ option-name }}__label color-swatch {% if stripped-value contains 'white' %}single-product-option-{{ option-name }}__label--white{% endif %}">
          
-                     <input type="radio"
-          form="{{ form_id }}"
+                     <input type="radio" form="{{ form_id }}"
           {% if option.selected_value == value %} checked="checked"{% endif %}
           value="{{ value | escape }}"
           data-index="option{{ option_index }}"
