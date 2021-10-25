@@ -31,21 +31,16 @@
                 assign color_count = color_count | plus: 1
               -%}
 
-          
-           <label for="variant_{{ value }}-{{ product.handle }}-{{ forloop.index0 }}"
-            class="single-product-option-{{ option-name }}__label color-swatch {% if stripped-value contains 'white' %}single-product-option-{{ option-name }}__label--white{% endif %}"
-            >      
-         <input type="radio" name={{value}}
-         class="single-option-selector color-swatch js-radio-button {%if variant.available %}{%else%} hide {%endif%}"
-       {% if variant.image %}
-                 
-                  data-variant-image="{{ variant.image | img_url: '400x' }}"
-                {% endif %}
-         value="{{ value | escape }}"
-       {% if option.selected_value == value %} checked="checked"{% endif %} 
-         id="{{variant.id}}"/>
-         <span class="swatch {%if variant.available %}{%else%} hide {%endif%}" style="background-color: {{ color_swatch_fallback }};"> </span>
-         </label>
+              <label for="variant_{{ option-name }}-{{ product-handle }}-{{ forloop.index0 }}"
+              class="single-product-option-{{ option-name }}__label color-swatch {% if stripped-value contains 'white' %}single-product-option-{{ option-name }}__label--white{% endif %}"
+              >      
+           <input type="radio" name="{{ option-name }}-{{ product-handle }}"
+           class="single-option-selector color-swatch single-product-option-{{ option-name }}__input js-radio-button"
+           data-single-option-selector
+           {% if option.selected_value == value %}checked="checked"{% endif %}  
+           id="variant_{{ option-name }}-{{ product-handle }}-{{ forloop.index0 }}"/>
+           <span class="swatch" style="background-color: {{ stripped-value }};"> </span>
+           </label>
           
           
           
