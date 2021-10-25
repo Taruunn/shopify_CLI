@@ -82,7 +82,7 @@ Shopify.AjaxifyCart = (function($) {
           url: _config.shopifyAjaxAddURL,
           dataType: 'json',
           type: 'post',
-         data: $(this).serialize(),
+          data: $addToCartForm.serialize(),
           success: function(itemData) {
             // Re-enable add to cart button.
             $addToCartBtn.addClass('inverted');
