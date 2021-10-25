@@ -2,41 +2,31 @@
 unless grid_item_width
 assign grid_item_width = 'small--one medium--three full--four'
 endunless
-
 if product.compare_at_price > product.compare_at_price
 assign sale = true 
 endif 
-
 %} 
-
 <div class="product-item {{ grid_item_width }}">
-                            <div class="product-meta">
-                                <div class="product-image">
-                                  
-                              
-                                  {%- assign preview_image = product.featured_image -%}
-  {%- assign img_url = preview_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-                                  
-                              <img id="{{ img_id }}"
-                                   src="{{ preview_image | img_url: '1x1' }}"
-              class="blur-up lazyload"
-              alt="{{ preview_image.alt }}"
-              data-src="{{ img_url }}"
-              data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
-              data-aspectratio="{{ preview_image.aspect_ratio }}"
-              data-sizes="auto"
-              data-image>
-
-                                </div>
-                                <div class="product-des">
-                                    <div class="product-title">{{ product.title }}</div>
-                                    <div class="product-price">{{ product.price | money }}</div>
-                                </div>
-					<div class="color-option">
-                      {% render 'color-option' , product: product %}
-                              </div>
-
-                            </div>
-
-
-                        </div>
+   <div class="product-meta">
+      <div class="product-image">
+         {%- assign preview_image = product.featured_image -%}
+         {%- assign img_url = preview_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+         <img id="{{ img_id }}"
+            src="{{ preview_image | img_url: '1x1' }}"
+            class="blur-up lazyload"
+            alt="{{ preview_image.alt }}"
+            data-src="{{ img_url }}"
+            data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+            data-aspectratio="{{ preview_image.aspect_ratio }}"
+            data-sizes="auto"
+            data-image>
+      </div>
+      <div class="product-des">
+         <div class="product-title">{{ product.title }}</div>
+         <div class="product-price">{{ product.price | money }}</div>
+      </div>
+      <div class="color-option">
+         {% render 'color-option' , product: product %}
+      </div>
+   </div>
+</div>
