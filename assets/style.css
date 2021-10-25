@@ -73,7 +73,7 @@
     flex-wrap: wrap;
       
     }
-   .grid-product__colors {
+   .Product-variants{
     align-items: center;
     justify-content: center;
     margin-top: 3px;
@@ -85,13 +85,13 @@
     border-radius: 100%;
 }
 
-.color-swatch--small {
+.color-swatch {
     width: 19px;
       margin: 0 12px;
     height: 19px;
 }
     .visually-hidden {
-    clip: rect(0, 0, 0, 0);
+
     overflow: hidden;
     position: absolute;
     height: 1px;
