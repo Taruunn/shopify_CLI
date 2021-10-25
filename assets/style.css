@@ -61,6 +61,10 @@
     max-width: 20%;
     }
    }
+    .product-item{
+    padding-right: 15px;
+    padding-left: 15px;
+    }
     .one-whole{
       
         width:calc(100% - 20px);
