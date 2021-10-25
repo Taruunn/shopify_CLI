@@ -106,18 +106,7 @@
 
                                         </label>
 
-                                    {% else %}
-
-                                        <input type="radio" name="{{ option-name }}-{{ product-handle }}"
-                                               class="single-option-selector single-product-option-{{ option-name }}__input"
-                                               data-single-option-selector
-                                               data-index="option{{ option.position }}"
-                                               value="{{ value | escape }}"
-                                               {% if option.selected_value == value %}checked="checked"{% endif %}
-                                               id="variant_{{ option-name }}-{{ product-handle }}-{{ forloop.index0 }}"/>
-
-                                        <label for="variant_{{ option-name }}-{{ product-handle }}-{{ forloop.index0 }}"
-                                               class="single-product-option-{{ option-name }}__label">{{ value }}</label>
+                                  
 
                                     {% endif %}
 
