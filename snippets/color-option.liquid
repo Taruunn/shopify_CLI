@@ -15,7 +15,7 @@
           assign is_color = true
         endif
       -%}
-{%- endfor -%}
+
       {%- if is_color -%}
         {%- assign option_index = forloop.index0 -%}
         {%- assign values = '' -%}
@@ -52,4 +52,4 @@
           {%- endstyle -%}
         {%- endif -%}
       {%- endif -%}
-  
+  {%- endfor -%}
