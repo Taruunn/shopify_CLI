@@ -98,25 +98,7 @@
     height: 1px;
     width: 1px;
 }
-     .Product-variants .color-swatch:before {
-    content: "";
-    position: absolute;
-  top: -3px;
-    left: -3px;
-    right: -3px;
-    bottom: -3px;
-    z-index: 2;
-}
-.Product-variants .color-swatch:before {
-    border-width: 3px;
-}
-
-.Product-variants .color-swatch:before {
-    border: 1px solid;
-  border-radius: 100%;
-    border-color: var( --mainColor);
- 
-}
+    
   .color-option .js-radio-button{
      display:none; 
     }
