@@ -107,6 +107,43 @@
           {%- endif -%}
         "></label>
 
+      
+      
+      
+                                        <label data-value="{{ text }}" title="{{color}}" 
+                                               class=" color-swatch "
+                                               >      
+                                          
+                                          
+                                          <input type="radio" name="{{ option-name }}-{{ product-handle }}"
+                                               class=" color-swatch  js-radio-button"
+                                             
+                                               value="{{ variant.id }}"
+                                           
+                                               {% if option.selected_value == value %}checked="checked"{% endif %}  
+                                               id="variant--{{ forloop.index0 }}"/>
+                                         
+                                          <span class="swatch"  {%- if text == 'white' -%}border: 1px solid #d1d1d1; {%- endif -%}
+          background-image: url({{ text | append: '.png' | file_url }});
+          background-color: {{ color | split: ' ' | last | handle }};> </span>
+                                         
+								<input type= "hidden"  name="id" min="1" value="{{ product.variants.first.id }}" />
+								<input type="hidden" id="quaninty" name="quantity" min="1" value="1" />
+                                            
+
+                                        </label>
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
         {% assign option_count = option_count | plus : 1 %}
     </li>
     {% endif %}
