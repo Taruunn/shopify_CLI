@@ -74,7 +74,7 @@
   
   
   
-  
+   {% for option in product.options %}
   
 {% for option in product.options %}
   {% if option == swatch %}
@@ -118,7 +118,7 @@
     {% endunless %}
   {% endfor %}
 </div>
-  
+  {% endfor %}
 
                 <!--product add to cart-->
                 <button
