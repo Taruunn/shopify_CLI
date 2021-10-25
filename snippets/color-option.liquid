@@ -34,7 +34,7 @@
               <label for="variant_{{ option-name }}-{{ product-handle }}-{{ forloop.index0 }}"
               class="single-product-option-{{ option-name }}__label color-swatch {% if stripped-value contains 'white' %}single-product-option-{{ option-name }}__label--white{% endif %}"
               >      
-           <input type="radio" name="{{ option-name }}-{{ product-handle }}"
+           <input type="radio" name="{{  }}-{{ product-handle }}"
            class="single-option-selector color-swatch single-product-option-{{ option-name }}__input js-radio-button"
            data-single-option-selector
            {% if option.selected_value == value %}checked="checked"{% endif %}  
