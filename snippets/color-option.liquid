@@ -1,3 +1,16 @@
+{% for opt in product.options_with_values %}
+	{% assign opt_l = opt.name | downcase %}
+	{% if opt_l == "color" or opt_l == "colour" %}
+	      {% for val in opt.values %}
+	          <span class="color-swatch" 
+	                style="background-image:url({{val | append: ".jpg"}} | asset_img_url: "32x" );
+	                background-color: {{ val| split:" " | last }};"
+                    >{{val}}</span>
+	      {% endfor %}
+	{% endif %}
+{% endfor %}
+
+
 {%- liquid
       assign swatch_trigger = 'products.general.color_swatch_trigger' | t | downcase
       assign swatch_file_extension = 'png'
