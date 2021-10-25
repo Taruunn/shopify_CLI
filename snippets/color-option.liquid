@@ -10,7 +10,7 @@
              
 
                     
-								<input type= "hidden"  name="id" min="1" value="{{ product.selected_or_first_available_variant.id }}" />
+								 <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
             
 <ul class="item-swatch">
     {% for option in product.options %}
