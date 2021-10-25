@@ -163,6 +163,24 @@ Shopify.AjaxifyCart = (function($) {
   }  
 })(jQuery);
 Shopify.AjaxifyCart.init();
+    
+     function refreshCart() {
+        var itemHTML;
+        $.getJSON("/cart.js", function(json) {
+            console.log(json);
+            $(".cart-drawer__item").each(function() {
+                if (!$(this).hasClass('cart-drawer__note-container')) {
+                    $(this).remove();
+                }
+            });
+            for (i = 0; i < json.items.length; i++) {
+                console.log(json.items[i].image);
+                itemHTML = "<div class=\'cart-drawer__item\' data-cart-item data-cart-item-id=\'" + json.items[i].key + "\' aria-live=\'polite\'><a href=\'" + json.items[i].url + "\' class=\'cart-drawer__item-image " + "img" + i + "\' style=\'" + 'background-position: 50% 50% !important;background-size: cover !important;background: url(' + (json.items[i].image).slice(0, -17) + '_medium.JPG\');' + "\' data-cart-item-background-image data-cart-item-href></a><div class=\'cart-drawer__item-content\'><a href=\'" + json.items[i].url + "\' class=\'h4 cart-drawer__item-title\' data-cart-item-href data-cart-item-title>" + json.items[i].product_title + "</a><p class=\'cart-drawer__item-subtitle\' data-cart-item-variant-title></p><ul class=\'cart-drawer__item-properties\' data-cart-item-property-list><li class=\'cart-drawer__item-property\' data-cart-item-property><a href=\'\'></a></li></ul><p class=\'cart-drawer__item-price-container\'><span class=\'cart-drawer__item-price\' data-cart-item-price>" + Shopify.formatMoney(json.items[i].price) + "</span><s data-cart-item-original-price></s></p><div class=\'cart-drawer__item-discount-container\' data-cart-item-discount-list><p class=\'cart-drawer__item-discount text-small\' data-cart-item-discount></p></div><label for=\'quantity_" + json.items[i].key + "\' class=\'label--hidden\' data-cart-item-label-quantity>" + json.items[i].quantity + "</label><input id=\'quantity_" + json.items[i].key + "\' class=\'cart-drawer__item-quantity\' value=\'" + json.items[i].quantity.toString() + "\' type=\'number\' pattern=\'d*\' min=\'1\' aria-label=\'Quantity\' data-cart-item-input-quantity><button class=\'cart-drawer__item-delete btn-link\' type=\'button\' data-cart-item-delete>Remove</button></div></div>";
+                $(itemHTML).prependTo('.cart-drawer__item-list');
+            }
+            $('.cart-drawer__subtotal-number').text(Shopify.formatMoney(json.total_price));
+        });
+        }
 </script>
 
 {% comment %}
