@@ -88,7 +88,7 @@
     {% assign text = color | handleize %}
 
     {% if option_count < 4 %}
-    <li>
+
         <div class="tooltip">
             {{color}}
         </div>
@@ -98,7 +98,7 @@
       
       
                                         <label data-value="{{ text }}" title="{{color}}" 
-                                               class=" color-swatch " data-img="{{ variant.image.src | product_img_url: '800x' }}
+                                               class=" color-swatch " data-img="{{ variant.image.src | product_img_url: '800x' }}"
                                                >      
                                           
                                           
@@ -132,7 +132,7 @@
       
       
         {% assign option_count = option_count | plus : 1 %}
-    </li>
+
     {% endif %}
 
     {% capture tempList %}
@@ -157,7 +157,7 @@
     {% endif %}
     {% endif %}
     {% endfor %}
-</ul>
+
 
   
   
