@@ -25,7 +25,7 @@
     {% endcapture %}
     {% unless colorlist contains color %}
     {% assign text = color | handleize %}
-<input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+
     {% if option_count < 4 %}
 
         <div class="tooltip visually-hidden">
@@ -53,7 +53,7 @@
       
          style=" background-color: {{ color | split: ' ' | last | handle }};"> </span>
                                          
-
+								<input type="hidden" name="id" value="{{ product.variants.first.id }}" />
 								<input type="hidden" id="quaninty" name="quantity" min="1" value="1" />
                                             
 
