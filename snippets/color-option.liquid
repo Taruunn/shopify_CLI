@@ -1,5 +1,4 @@
-<form method="post" action="/cart/add" enctype="multipart/form-data" >
-  {%- liquid
+{%- liquid
       assign swatch_trigger = 'products.general.color_swatch_trigger' | t | downcase
       assign swatch_file_extension = 'png'
       assign color_count = 0
@@ -54,26 +53,3 @@
         {%- endif -%}
       {%- endif -%}
     {%- endfor -%}
-  
-  
-  
- 
-   <!--product add to cart-->
-  <input type= "hidden"  name="id" min="1" value="{{ product.selected_or_first_available_variant.id }}" />
-  <input type="hidden" id="quaninty" name="quantity" min="1" value="1" />
-   <button
-   class="single-product__add-to-cart u-b6 js-ajax-add-to-cart"
-   type="submit"
-   name="add"
-   data-add-to-cart
-   {% unless product.available %}disabled="disabled"{% endunless %}>
-   <span data-add-to-cart-text>
-   {% if product.available %}
-   Add To Cart
-   {% else %}
-   Sold Out
-   {% endif %}
-   </span>
-   </button>
-   <!--end product add to cart-->
-</form>
