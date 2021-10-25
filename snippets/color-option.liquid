@@ -128,6 +128,8 @@
         class="variant-input"
         data-index="option{{ option_index }}"
         data-value="{{ value | escape }}">
+        
+        
         <input type="radio"
           form="{{ form_id }}"
           {% if option.selected_value == value %} checked="checked"{% endif %}
@@ -153,11 +155,7 @@
           data-preorder-dispatch="{{ product.metafields.Specs.Dispatch }}" data-preorder-quantity="20" data-variant-inventory-policy="{{ variant.inventory_policy }}" data-variant-quantity="{{variant.inventory_quantity}}" >
             {{ value | escape }}
           </label>
-        {%- else -%}
-          <label
-            for="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}"
-            class="variant__button-label{% unless product_available %} disabled{% endunless %}" data-preorder-dispatch="{{ product.metafields.Specs.Dispatch }}" data-preorder-quantity="20" data-variant-inventory-policy="{{ variant.inventory_policy }}" data-variant-quantity="{{variant.inventory_quantity}}" >{{ value | escape }}</label>
-        {%- endif -%}
+         {%- endif -%}
       </div>
          {% endunless %}
     {%- endfor -%}
