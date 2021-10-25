@@ -6,8 +6,8 @@
 
 <form action="/cart/add" method="post" enctype="multipart/form-data" >
 
-
-             
+<div class="flex">
+                <div class="product-price">{{ product.price | money }}</div>
 
               <div class="colors">      
 								 
@@ -99,6 +99,7 @@
 
 
   
+  </div>
   </div>
   
                 <!--product add to cart-->
