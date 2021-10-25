@@ -1,11 +1,11 @@
 <!--ajax cart drawer-->
-<div class="ajax-cart__drawer cart-drawer__item">
+<div class="ajax-cart__drawer">
 
     <div class="ajax-cart-drawer">
 
     <form action="{{ routes.cart_url }}" method="post" novalidate data-location="page" id="CartPageForm">
       <div class="cart__page">
-        <div data-products class="cart__page-col">
+        <div data-products class="cart__page-col cart-drawer__item-list">
           {% for item in cart.items %}
             {%- render 'cart-item', product: item -%}
           
