@@ -93,25 +93,12 @@
             {{color}}
         </div>
 
-        <label data-value="{{ text }}" title="{{color}}" {% if variant.image != null %}  data-img="{{ variant.image.src | product_img_url: '800x' }}"{% endif %} style="
-          {%- if settings.color_swatch_style == 'variant' or settings.color_swatch_style == 'variant_grouped'-%}
-          {%- if variant.image != null -%}
-          background-image: url({{ variant.image.src | product_img_url: '24x' }});
-          {%- else -%}
-          background-color: {{ color | split: ' ' | last | handle }};
-          {%- endif -%}
-          {%- else -%}
-          {%- if text == 'white' -%}border: 1px solid #d1d1d1; {%- endif -%}
-          background-image: url({{ text | append: '.png' | file_url }});
-          background-color: {{ color | split: ' ' | last | handle }};
-          {%- endif -%}
-        "></label>
-
+       
       
       
       
                                         <label data-value="{{ text }}" title="{{color}}" 
-                                               class=" color-swatch "
+                                               class=" color-swatch " data-img="{{ variant.image.src | product_img_url: '800x' }}
                                                >      
                                           
                                           
