@@ -39,9 +39,9 @@
    type="submit"
    name="add"
    data-add-to-cart
-   >
+   {% unless product.available %}disabled="disabled"{% endunless %}>
    <span data-add-to-cart-text>
-   {% if current_variant.available %}
+   {% if product.available %}
    Add To Cart
    {% else %}
    Sold Out
