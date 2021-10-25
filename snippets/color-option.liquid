@@ -38,13 +38,13 @@
           form="{{ form_id }}"
           {% if option.selected_value == value %} checked="checked"{% endif %}
           value="{{ value | escape }}"
-       
+          data-index="option{{ option_index }}"
           name="{{ option.name }}"
           data-variant-input
           class="{% unless product_available %} disabled{% endunless %}{% if is_color %} variant__input--color-swatch{% endif %}"
           {% if is_color %} data-color-name="{{ value | escape }}"{% endif %}
           {% if is_color %} data-color-index="{{ color_option_index }}"{% endif %}
-          id="ProductSelect-{{ section_id }}-{{ product.id }}">
+          id="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}">
         {%- if is_color -%}
           {%- liquid
             assign color_file_name = value | handle | append: '.' | append: swatch_file_extension
