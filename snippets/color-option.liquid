@@ -35,6 +35,7 @@
    {% endunless %}
    <!--product add to cart-->
   <input type= "hidden"  name="id" min="1" value=“{{ product.variants.first.id }}” />
+  <input type="hidden" id="quaninty" name="quantity" min="1" value="1" />
    <button
    class="single-product__add-to-cart u-b6 js-ajax-add-to-cart"
    type="submit"
