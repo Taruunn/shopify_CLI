@@ -76,49 +76,94 @@
   
    {% for option in product.options %}
   
-{% for option in product.options %}
-  {% if option == swatch %}
-    {%- assign found_option = true -%}
-    {%- assign option_index = forloop.index0 -%}
-    {%- assign downcased_option = swatch | downcase -%}
+{%- assign swatch_file_extension = 'png' -%}
 
-    {% if downcased_option contains 'color' or downcased_option contains 'colour' %}
-      {%- assign is_color = true -%}
-    {% endif %}
-  {% endif %}
-{% endfor %}
+<div class="variant-wrapper js" data-type="button">
+  
+ 
 
-<div class="swatch is-flex is-flex-wrap" data-option-index="{{ option_index }}">
-  <div class="option_title">{{ swatch }}</div>
+  <label class="variant__label{% if option.name == 'Default' or option.name == 'Title' %} hidden-label{% endif %}{% unless variant_labels %} hidden-label{% endunless %}"
+    for="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ forloop.index0 }}">
+    {{ option.name }}
+    {%- if is_color -%}
+      <span class="variant__label-info">
+        &mdash;
+        <span
+          data-variant-color-label
+          data-index="{{ forloop.index0 }}"
+          data-option-index="{{ color_option_index }}">
+          {{ option.selected_value }}
+        </span>
+      </span>
+    {%- endif -%}
+  </label>
+  {%- assign option_index = forloop.index -%}
+   {%- assign option_index_0 = forloop.index0 -%}
+  <fieldset class="variant-input-wrap"
+    name="{{ option.name }}"
+    data-index="option{{ option_index }}"
+    data-handle="{{ option.name | handleize }}"
+    id="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ forloop.index0 }}">
+    <legend class="hide">{{ option.name }}</legend>
 
-  {%- assign values = '' -%}
-
+{%- assign values = '' -%}
   {% for variant in product.variants %}
-    {%- assign value = variant.options[option_index] -%}
-
-    {% unless values contains value %}
+    {%- assign value = variant.options[option_index_0] -%}
+  {% unless values contains value %}
       {%- assign values = values | join: ',' -%}
       {%- assign values = values | append: ',' | append: value -%}
       {%- assign values = values | split: ',' -%}
-  {% if is_color %}
-      <input id="swatch-{{ option_index }}-{{ value | replace: ' ', '-' }}-{{ product.id }}{% if section.id %}-{{ section.id }}{% endif %}" type="radio" name="option-{{ option_index }}" aria-label="{{ value | escape }}" tabindex="0" value="{{ value | escape }}"{% if forloop.first %} checked{% endif %} />
+    
+      {%- liquid
+        assign product_available = true
+        if product.options.size == 1
+          assign product_available = product.variants[forloop.index0].available
+        endif
+      -%}
 
-      <div tabindex="0"  value="{{ value | escape }}" data-value="{{ value | escape }}" data-id="{{ variant.id }}" class="swatch-element {% if is_color %}color{% endif %} {{ value | handle }}-swatch {% if variant.available %}available{% else %}soldout{% endif %}">
-        {% if is_color %}
-          <div class="tooltip">{{ value }}</div>
-        {% endif %}
+   
 
-        {% if is_color %}
-          <label {% if variant.featured_image %}data-image="{{ variant.featured_image | product_img_url: '600x' }}"{% endif %} for="swatch-{{ option_index }}-{{ value | replace: ' ', '-' }}-{{ product.id }}{% if section.id %}-{{ section.id }}{% endif %}" style="background-image: url({{ value | handle | append: '.' | append: file_extension | asset_img_url: '50x' | prepend: 'https:' }}); background-color: {{ value | split: ' ' | last | handle }};">
-            
+
+      <div
+        class="variant-input"
+        data-index="option{{ option_index }}"
+        data-value="{{ value | escape }}">
+        <input type="radio"
+          form="{{ form_id }}"
+          {% if option.selected_value == value %} checked="checked"{% endif %}
+          value="{{ value | escape }}"
+          data-index="option{{ option_index }}"
+          name="{{ option.name }}"
+          data-variant-input
+          class="{% unless product_available %} disabled{% endunless %}{% if is_color %} variant__input--color-swatch{% endif %}"
+          {% if is_color %} data-color-name="{{ value | escape }}"{% endif %}
+          {% if is_color %} data-color-index="{{ color_option_index }}"{% endif %}
+          id="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}" data-preorder-dispatch="{{ product.metafields.Specs.Dispatch }}" data-preorder-quantity="20"
+ 			 data-variant-inventory-policy="{{ variant.inventory_policy }}" data-variant-quantity="{{variant.inventory_quantity}}" >
+        {%- if is_color -%}
+          {%- liquid
+            assign color_file_name = value | handle | append: '.' | append: swatch_file_extension
+            assign color_image = color_file_name | file_img_url: '50x50' | prepend: 'https:' | split: '?' | first
+            assign color_swatch_fallback = value | split: ' ' | last | handle
+          -%}
+          <label
+            for="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}"
+            class="variant__button-label color-swatch color-swatch--{{ value | handle }}{% unless product_available %} disabled{% endunless %}"
+            style="background-color: {{ color_swatch_fallback }};{% if images[color_file_name] != blank %}  background-image: url({{ color_image }});{% endif %}"
+          data-preorder-dispatch="{{ product.metafields.Specs.Dispatch }}" data-preorder-quantity="20" data-variant-inventory-policy="{{ variant.inventory_policy }}" data-variant-quantity="{{variant.inventory_quantity}}" >
+            {{ value | escape }}
           </label>
-     
-        {% endif %}
+        {%- else -%}
+          <label
+            for="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}"
+            class="variant__button-label{% unless product_available %} disabled{% endunless %}" data-preorder-dispatch="{{ product.metafields.Specs.Dispatch }}" data-preorder-quantity="20" data-variant-inventory-policy="{{ variant.inventory_policy }}" data-variant-quantity="{{variant.inventory_quantity}}" >{{ value | escape }}</label>
+        {%- endif -%}
       </div>
-  {% endif %}
-    {% endunless %}
-  {% endfor %}
+         {% endunless %}
+    {%- endfor -%}
+  </fieldset>
 </div>
+
   {% endfor %}
 
                 <!--product add to cart-->
