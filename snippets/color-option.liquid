@@ -12,7 +12,7 @@
          {% if option-name contains 'color' or option-name contains 'colour' %}
          {% assign is_color = true %}
          {% endif %}
-          {% for variant in product.variants %}
+      
          {% if is_color %}
          <label for="variant_{{ option-name }}-{{ product-handle }}-{{ forloop.index0 }}"
             class="single-product-option-{{ option-name }}__label color-swatch {% if stripped-value contains 'white' %}single-product-option-{{ option-name }}__label--white{% endif %}"
@@ -22,10 +22,12 @@
          data-single-option-selector
          {% if option.selected_value == value %}checked="checked"{% endif %}  
          id="variant_{{ option-name }}-{{ product-handle }}-{{ forloop.index0 }}"/>
+               {% for variant in product.variants %}
          <span class="swatch" style="background-color: {{ stripped-value }};"> </span>
+                {% endfor %}
          </label>
          {% endif %}
-         {% endfor %}
+    
       </div>
    </div>
    {% endfor %}
