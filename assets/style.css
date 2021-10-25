@@ -83,6 +83,9 @@
     form .flex_prducts {
     justify-content: space-between;
 }
+    .product-title {
+    margin: 10px 0;
+}
     .flex_prducts {
        display: -webkit-box;
     display: -ms-flexbox;
