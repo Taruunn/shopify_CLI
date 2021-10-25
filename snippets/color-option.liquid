@@ -7,70 +7,9 @@
 <form action="/cart/add" method="post" enctype="multipart/form-data" >
 
                 <!--product variants-->
-                {% unless product.has_only_default_variant %}
+             
 
-                    {% for option in product.options_with_values %}
-
-                        <div class="single-product__option-wrapper js Product-variants">
-
-                            {% assign option-name = option.name | downcase %}
-
-                            <div class="js-single-product-option-{{ option-name }} single-product-option-{{ option-name }}"
-                                 id="SingleOptionSelector-{{ forloop.index0 }}">
-
-                                {% for value in option.values %}
-
-                                    {% assign product-handle = product.handle %}
-
-                                    {% assign is_color = false %}
-
-                                    {% assign stripped-value = value | split: ' ' | last | handle %}
-
-                                    {% if option-name contains 'color' or option-name contains 'colour' %}
-
-                                        {% assign is_color = true %}
-
-                                    {% endif %}
-
-                                    {% if is_color %}
-
-                                       
-
-                                        <label for="variant_{{ option-name }}-{{ product-handle }}-{{ forloop.index0 }}"
-                                               class="single-product-option-{{ option-name }}__label color-swatch {% if stripped-value contains 'white' %}single-product-option-{{ option-name }}__label--white{% endif %}"
-                                               >      
-                                          
-                                          
-                                          <input type="radio" name="{{ option-name }}-{{ product-handle }}"
-                                               class="single-option-selector color-swatch single-product-option-{{ option-name }}__input js-radio-button"
-                                               data-single-option-selector
-                                               data-index="option{{ option.position }}"
-                                               value="{{ value | escape }}"
-                                               data-color="{{ value | handleize }}"
-                                               {% if option.selected_value == value %}checked="checked"{% endif %}  
-                                               id="variant_{{ option-name }}-{{ product-handle }}-{{ forloop.index0 }}"/>
-                                         
-                                          <span class="swatch" style="background-color: {{ stripped-value }};"> </span>
-                                         
-								<input type= "hidden"  name="id" min="1" value="{{ product.variants.first.id }}" />
-								<input type="hidden" id="quaninty" name="quantity" min="1" value="1" />
-                                            
-
-                                        </label>
-
-                                  
-
-                                    {% endif %}
-
-                                {% endfor %}
-
-                            </div>
-
-                        </div>
-
-                    {% endfor %}
-
-                {% endunless %}
+                    
 
             
 <ul class="item-swatch">
