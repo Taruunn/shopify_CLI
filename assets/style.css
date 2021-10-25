@@ -144,8 +144,9 @@
 	 padding: 20px;
 }
  .ajax-cart-drawer {
-	 position: relative;
-	 height: 100%;
+    position: relative;
+    height: 100%;
+    overflow: scroll;
 }
  .ajax-cart-drawer__close {
 	 position: absolute;
