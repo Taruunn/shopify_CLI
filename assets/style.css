@@ -61,6 +61,14 @@
   max-width: calc(20% - 40px );
   }
  }
+    .product-title {
+    margin: 10px 0;
+ 
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
     
     .product-item{
     padding-right: 20px;
