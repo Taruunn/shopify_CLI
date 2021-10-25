@@ -18,12 +18,7 @@
                             <div class="js-single-product-option-{{ option-name }} single-product-option-{{ option-name }}"
                                  id="SingleOptionSelector-{{ forloop.index0 }}">
 
-                          
-         
-
-
-
-
+                                {% for value in option.values %}
 
                                     {% assign product-handle = product.handle %}
 
@@ -38,7 +33,7 @@
                                     {% endif %}
 
                                     {% if is_color %}
- {%- for variant in product.variants -%}
+
                                        
 
                                         <label for="variant_{{ option-name }}-{{ product-handle }}-{{ forloop.index0 }}"
@@ -61,12 +56,12 @@
                                             
 
                                         </label>
-    {% endfor %}
+
                                   
 
                                     {% endif %}
 
-                            
+                                {% endfor %}
 
                             </div>
 
