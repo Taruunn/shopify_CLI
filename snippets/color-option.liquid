@@ -38,7 +38,7 @@
           form="{{ form_id }}"
           {% if option.selected_value == value %} checked="checked"{% endif %}
           value="{{ value | escape }}"
-          data-index="option{{ option_index }}"
+       
           name="{{ option.name }}"
           data-variant-input
           class="{% unless product_available %} disabled{% endunless %}{% if is_color %} variant__input--color-swatch{% endif %}"
