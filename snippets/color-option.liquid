@@ -1,4 +1,4 @@
-<form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-{{ product.handle }}">
+<form  enctype="multipart/form-data" >
    <!--product variants-->
    {% unless product.has_only_default_variant %}
    {% for option in product.options_with_values %}
