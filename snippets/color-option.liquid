@@ -1,7 +1,7 @@
 <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-{{ product.id }}">
    <!--product variants-->
    {% unless product.has_only_default_variant %}
-   {% for option in product.options_with_values %}
+   {% for option in product.variants %}
    <div class="single-product__option-wrapper js Product-variants">
       {% assign option-name = option.name | downcase %}
       <div class="js-single-product-option-{{ option-name }} single-product-option-{{ option-name }}"
