@@ -1,12 +1,12 @@
 <form method="post" action="/cart/add" enctype="multipart/form-data" >
    <!--product variants-->
    {% unless product.has_only_default_variant %}
-   {% for option in product.options_with_values %}
+  {% for variant in product.variants %}
    <div class="single-product__option-wrapper js Product-variants">
       {% assign option-name = option.name | downcase %}
       <div class="js-single-product-option-{{ option-name }} single-product-option-{{ option-name }}"
          id="SingleOptionSelector-{{ forloop.index0 }}">
-        {% for variant in product.variants %}
+      
     {%- assign value = variant.options[option_index_0] -%}
       {%- liquid
         assign product_available = true
@@ -30,7 +30,7 @@
          <span class="swatch" style="background-color: {{ stripped-value }};"> </span>
          </label>
          {% endif %}
-         {% endfor %}
+       
       </div>
    </div>
    {% endfor %}
