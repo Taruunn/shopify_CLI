@@ -90,7 +90,9 @@ Shopify.AjaxifyCart = (function($) {
             _showFeedback('success','<i class="fa fa-check"></i> Added to cart! <a href="/cart">View cart</a> or <a href="/collections/all">continue shopping</a>.',$addToCartForm);
             window.setTimeout(function(){
               $addToCartBtn.prop('disabled', false).removeClass('disabled').removeClass('inverted');
-             
+             document.documentElement.dispatchEvent(new CustomEvent('cart:refresh', {
+			bubbles: true
+				}));
                $('.ajax-cart__drawer').addClass('is-open');
               _setText($addToCartBtn,_config.addToCartBtnLabel);
             }, _config.howLongTillBtnReturnsToNormal);
