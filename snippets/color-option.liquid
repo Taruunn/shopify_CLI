@@ -6,9 +6,14 @@
       {% assign option-name = option.name | downcase %}
       <div class="js-single-product-option-{{ option-name }} single-product-option-{{ option-name }}"
          id="SingleOptionSelector-{{ forloop.index0 }}">
-         {% for value in option.values %}
-         {% assign product-handle = product.handle %}
-         {% assign is_color = false %}
+        {% for variant in product.variants %}
+    {%- assign value = variant.options[option_index_0] -%}
+      {%- liquid
+        assign product_available = true
+        if product.options.size == 1
+          assign product_available = product.variants[forloop.index0].available
+        endif
+      -%}
          {% assign stripped-value = value | split: ' ' | last | handle %}
          {% if option-name contains 'color' or option-name contains 'colour' %}
          {% assign is_color = true %}
@@ -20,9 +25,6 @@
          <input type="radio" name="{{ option-name }}-{{ product-handle }}"
          class="single-option-selector color-swatch single-product-option-{{ option-name }}__input js-radio-button"
          data-single-option-selector
-         data-index="option{{ option.position }}"
-         value="{{ value | escape }}"
-         data-color="{{ value | handleize }}"
          {% if option.selected_value == value %}checked="checked"{% endif %}  
          id="variant_{{ option-name }}-{{ product-handle }}-{{ forloop.index0 }}"/>
          <span class="swatch" style="background-color: {{ stripped-value }};"> </span>
