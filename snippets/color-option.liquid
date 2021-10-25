@@ -18,7 +18,14 @@
                             <div class="js-single-product-option-{{ option-name }} single-product-option-{{ option-name }}"
                                  id="SingleOptionSelector-{{ forloop.index0 }}">
 
-                                {% for value in option.values %}
+                           {%- for variant in product.variants -%}
+          {%- assign value = variant.options[option_index] -%}
+
+
+    {%- assign values = values | join: ',' -%}
+    {%- assign values = values | append: ',' | append: value -%}
+    {%- assign values = values | split: ',' -%}
+
 
                                     {% assign product-handle = product.handle %}
 
