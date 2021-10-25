@@ -23,10 +23,13 @@ endif
       </div>
       <div class="product-des">
          <div class="product-title">{{ product.title }}</div>
-         <div class="product-price">{{ product.price | money }}</div>
+        
       </div>
+    
       <div class="color-option">
+         <div class="product-price">{{ product.price | money }}</div>
          {% render 'color-option' , product: product %}
       </div>
+      
    </div>
 </div>
