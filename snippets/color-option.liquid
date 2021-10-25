@@ -75,33 +75,9 @@
             <select name="id">
   {% for variant in product.variants %}
     {% if variant.available %}
-     
-              
-       <label for="variant_{{ option-name }}-{{ product-handle }}-{{ forloop.index0 }}"
-                                               class=" color-swatch "
-                                               >      
-                                          
-                                          
-                                          <input type="radio" name="{{ option-name }}"
-                                               class=" color-swatch  js-radio-button"
-                                            
-                                         
-                                              value="{{ variant.id }}"
-                                               {% if option.selected_value == value %}checked="checked"{% endif %}  
-                                               id="variant_{{ option-name }}-{{ product-handle }}-{{ forloop.index0 }}"/>
-                                         
-                                          <span class="swatch" style="background-color: {{ stripped-value }};"> </span>
-                                         
-								<input type= "hidden"  name="id" min="1" value="{{ product.variants.first.id }}" />
-								<input type="hidden" id="quaninty" name="quantity" min="1" value="1" />
-                                            
-
-                                        </label>        
-              
-              
-              
+    <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>     
     {% else %}
- 
+    <option disabled="disabled">{{ variant.title }} - Sold Out</option>
     {% endif %}
   {% endfor %}
     </select>     
