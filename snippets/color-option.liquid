@@ -39,7 +39,7 @@
            data-single-option-selector
            {% if option.selected_value == value %}checked="checked"{% endif %}  
            id="variant_{{ option-name }}-{{ product-handle }}-{{ forloop.index0 }}"/>
-           <span class="swatch" style="background-color: {{ stripped-value }};"> </span>
+           <span class="swatch" style="background-color: {{ color_swatch_fallback }};"> </span>
            </label>
           
           
