@@ -47,13 +47,13 @@
                                                value="{{ variant.id }}"
                                            
                                                {% if option.selected_value == value %}checked="checked"{% endif %}  
-                                               id="variant--{{ forloop.index0 }}"/>
+                                               id="variant--{{ forloop.index0 }}">
                                          
                                           <span class="swatch"  {%- if text == 'white' -%}border: 1px solid #d1d1d1; {%- endif -%}
       
          style=" background-color: {{ color | split: ' ' | last | handle }};"> </span>
                                          
-								<input type= "hidden"  name="id" min="1" value="{{ product.variants.first.id }}" />
+								<input type= "hidden"  name="id" min="1" value="{{ product.selected_or_first_available_variant.id }}" />
 								<input type="hidden" id="quaninty" name="quantity" min="1" value="1" />
                                             
 
