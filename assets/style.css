@@ -1021,7 +1021,17 @@ body.no-scroll {
 	margin: 0;
 	padding-bottom: 15px;
 }
-
+span.item-swatch-more {
+    font-size: 14px;
+    text-decoration: underline;
+    margin-left: 8px;
+}
+      
+      .flex-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 @media(max-width:500px) {
 	.modal-wrapper {
 		width: 70%;
@@ -1041,4 +1051,5 @@ body.no-scroll {
 		width: 18px;
 		height: 18px;
 	}
+  
 }
