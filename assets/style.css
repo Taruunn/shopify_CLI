@@ -529,6 +529,9 @@ button .checkmark path {
     text-align: center;
     width: 100%;
 }
+    button.btn.cart__checkout {
+    padding: 18px 0;
+}
      
     @media(max-width:768px){
       .half-width-two{
