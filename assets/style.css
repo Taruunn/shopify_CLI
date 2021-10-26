@@ -127,6 +127,12 @@ button.btn.cart__checkout {
 	position: relative;
       border-radius: 3px;
 }
+      
+   button.add-to-cart span,button.btn.cart__checkout {
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
 
 form .flex_prducts {
 	-webkit-box-pack: justify;
