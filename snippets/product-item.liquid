@@ -48,7 +48,7 @@ endif
       data-variants
     >
       {% for v in product.variants %}
-        <option {% if v == variant %}selected="selected"{% endif %} value="{{ v.id }}" class="select-{{v.id}}" data-featured-image="{{ v.featured_media }}" data-image="{{ v.featured_media | product_img_url: '600x' }}" data-sku="{{ v.sku }}">{{ v.title }}</option>
+        <option {% if v == variant %}selected="selected"{% endif %} value="{{ v.id }}" class="select-click" data-featured-image="{{ v.featured_media }}" data-image="{{ v.featured_media | product_img_url: '600x' }}" data-sku="{{ v.sku }}">{{ v.title }}</option>
       {% endfor %}
     </select>
   </div>
