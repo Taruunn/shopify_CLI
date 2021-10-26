@@ -48,5 +48,20 @@ endif
   $('.modal-toggle-{{product.id}}').on('click', function(e) {
   e.preventDefault();
   $('.modal-{{product.id}}').toggleClass('is-visible');
+    
+    
+    
+    
+   
+});
+  
+    $('.modal-close').on('click', function(e) {
+  e.preventDefault();
+  $('.modal-toggle-{{product.id}}').removeClass('is-visible');
+    
+    
+    
+    
+   
 });
      </script>
