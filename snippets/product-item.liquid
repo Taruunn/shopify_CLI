@@ -30,28 +30,7 @@ endif
         
           {% form 'product', product  %}
         
-        <div
-    class="
-      select
-      {% if product.has_only_default_variant %}default_select{% endif %}
-    "
-  >
-
-    {% if product.options.size == 1 and settings.product_form_style == 'dropdown' %}
-      <label>{{ product.options[0] }}</label>
-    {% endif %}
-
-    <select
-      id="product-select-{{ product.id }}{{ product-form }}{{ section.id }}{{ block.id }}"
-      name="id"
-      class="{% if product.options.size > 1 %}multi_select{% endif %}"
-      data-variants
-    >
-      {% for v in product.variants %}
-        <option {% if v == variant %}selected="selected"{% endif %}id="clcikselect" value="{{ v.id }}" class="select-click" data-featured-image="{{ v.featured_media }}" data-image="{{ v.featured_media | product_img_url: '600x' }}" data-sku="{{ v.sku }}">{{ v.title }}</option>
-      {% endfor %}
-    </select>
-  </div>
+        
         
       {% for option in product.options %}
         <input type="hidden" name="form_type" value="product">
