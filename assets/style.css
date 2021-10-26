@@ -682,3 +682,6 @@ button .checkmark path {
     display: flex;
     margin: 7px 0;
 }
+    span.item-swatch-more, .modal-close {
+    cursor: pointer;
+}
