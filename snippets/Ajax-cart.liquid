@@ -26,6 +26,7 @@ $(document).on('click', '.ajax-submit', function (e) {
             $addToCartBtn.removeAttr('disabled').removeClass('disabled');
             $addToCartBtn.find('.checkmark').removeClass('checkmark-active');
             $addToCartBtn.find('span').removeClass('zoomOut').addClass('fadeInDown');
+          	$('.ajax-cart__drawer').addClass('is-open');
           }, 1000);
 
           $.ajax({
