@@ -4,7 +4,7 @@
 {%- assign found_option = false -%}
 {%- assign is_color = false -%}
 {%- assign option_index = 0 -%}
-
+   {% assign option_count = 0 %}
 {% for option in product.options %}
   {% if option == swatch %}
     {%- assign found_option = true -%}
@@ -30,7 +30,7 @@
       {%- assign values = values | append: ',' | append: value -%}
       {%- assign values = values | split: ',' -%}
 
-   {% if variant < 4 %}
+   {% if option_count < 4 %}
   
       <input class="js-radio-button" id="swatch-{{ option_index }}-{{ value | replace: ' ', '-' }}-{{ product.id }}{% if section.id %}-{{ section.id }}{% endif %}" type="radio" name="id" aria-label="{{ value | escape }}" tabindex="0" value="{{ variant.id }}"{% if variant == product.selected_or_first_available_variant %} checked{% endif %} />
 
