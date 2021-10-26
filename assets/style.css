@@ -39,11 +39,18 @@
       
     }
      
-     .half-width{
+     .half-width-third{
        -webkit-box-flex: 0;
-  -ms-flex: 0 0  calc(50% - 40px );
-  flex: 0 0  calc(50% - 40px );
-  max-width:  calc(50% - 40px );
+  -ms-flex: 0 0  calc(75% - 40px );
+  flex: 0 0  calc(75% - 40px );
+  max-width:  calc(75% - 40px );
+      
+     }
+     .half-width-two{
+       -webkit-box-flex: 0;
+  -ms-flex: 0 0  calc(25% - 40px );
+  flex: 0 0  calc(25% - 40px );
+  max-width:  calc(25% - 40px );
       
      }
   }
