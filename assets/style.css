@@ -839,6 +839,7 @@ button.btn.cart__checkout {
 		font-size: 15px;
 		font-weight: 500;
 		text-transform: uppercase;
+      text-decoration: none;
 	}
 	.desktop-hide {
 		display: block;
