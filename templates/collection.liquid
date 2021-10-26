@@ -1,0 +1,3 @@
+  {% for product in collection.products limit: total_products %}
+                  {% render 'product-item', product:product, grid_item_width:grid_item_width,per_row:per_row %}
+                  {% endfor %}
