@@ -33,6 +33,11 @@
   {% endif %}
 {% endfor %}
 
+<div class="">
+  
+  <p class="product-price samll-hide">{{ product.price | money }} </p>
+
+
 <div id="SingleOptionSelector-0" data-option-index="{{ option_index }}" class="small-hide">
   <div class="option_title visually-hidden">{{ swatch }}</div>
 
@@ -83,7 +88,7 @@
 </div>
 
 
-
+</div>
   <div class="modal-{{product.id}} modal">
 
     <div class="modal-wrapper modal-transition">
