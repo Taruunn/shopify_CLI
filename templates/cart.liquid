@@ -16,9 +16,10 @@
           {%- endfor -%}
         </div>
         <div class="half-width-two">
+          <div class="sticky">
           <div class="cart__item-sub cart__item-row">
         
-            <div data-subtotal>{{ cart.total_price | money }}</div>
+            <div data-subtotal>Subtotal {{ cart.total_price | money }}</div>
           </div>
 
        
@@ -28,9 +29,10 @@
             checkout
             </button>
 
-            {% if additional_checkout_buttons and settings.cart_additional_buttons %}
+            
               <div class="additional-checkout-buttons">{{ content_for_additional_checkout_buttons }}</div>
-            {% endif %}
+            
+          </div>
           </div>
 
          
