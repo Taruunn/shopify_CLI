@@ -672,3 +672,8 @@ button .checkmark path {
     display: flex;
 }
 
+  .modal-wrapper .tooltip {
+    font-size: 15px;
+    text-transform: capitalize;
+    margin-left: 11px;
+}
