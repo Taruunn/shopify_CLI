@@ -1,4 +1,20 @@
 
+
+    {% for product_option in product.options_with_values %}
+    {% if product_option.name == 'Color' or product_option.name == 'Colour' %}
+   
+    <span class="item-swatch-more " >
+       
+            {{ product_option.values.size  }}
+       
+    </span>
+
+    {% endif %}
+    {% endfor %}
+
+
+
+
 {%- assign file_extension = 'png' -%}
 {%- assign swatch = option -%}
 {%- assign found_option = false -%}
