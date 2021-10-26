@@ -27,9 +27,17 @@ endif
       </div>
     
       <div class="color-option">
-      
-         {% render 'color-option' , product: product %}
+        
+          {% form 'product', product  %}
+        
+      {% for option in product.options %}
+        {% render 'color-option',
+          option: option,
+          product: product
+        %}
+      {% endfor %}
+       {% endform %}
+        
       </div>
-      
    </div>
 </div>
