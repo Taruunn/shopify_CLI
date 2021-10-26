@@ -260,6 +260,10 @@
 	 background-size: cover;
 	 cursor: pointer;
 }
+    
+    .cart__page-col.cart-drawer__item-list {
+    padding: 20px 10px;
+}
  img.crossed-out {
     display: none;
 }
