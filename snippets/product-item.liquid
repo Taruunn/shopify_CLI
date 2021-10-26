@@ -36,7 +36,8 @@ endif
           product: product
         %}
       {% endfor %}
-             <input type="hidden" min="1" size="2" class="quantity" name="quantity" id="quantity" value="1" >
+            <input type="hidden" name="id" value="{{ variant.id }}" />
+								<input type="hidden" id="quaninty" name="quantity" min="1" value="1" />
          <button
                         class="add-to-cart ajax-submit"
                         type="submit"
