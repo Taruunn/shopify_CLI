@@ -65,7 +65,8 @@ endif
   e.preventDefault();
   $('.modal-{{ product.id }}').toggleClass('is-visible');
     $('body').addClass('no-scroll'); 
-  
+   var $button = $('.submit-{{product.id}}').clone();
+  $('.add-{{product.id}}').html($button);
   });
 
   
