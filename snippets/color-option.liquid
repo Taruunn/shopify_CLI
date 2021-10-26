@@ -56,9 +56,9 @@
     {% if product_option.name == 'Color' or product_option.name == 'Colour' %}
     {% if product_option.values.size > 4 %}
     <span class="item-swatch-more">
-        <button  title="More Color">
+       
             + {{ product_option.values.size | minus : 4 }}
-        </button>
+       
     </span>
     {% endif %}
     {% endif %}
