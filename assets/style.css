@@ -660,3 +660,10 @@ button .checkmark path {
     vertical-align: middle;
     fill: currentcolor;
 }
+    
+    .modal-wrapper div#SingleOptionSelector-0 {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
+    padding: 20px 50px;
+}
