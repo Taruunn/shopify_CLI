@@ -1,110 +1,56 @@
+{% comment %}
+Set the extension of your color files below. Use 'png', 'jpeg', 'jpg' or 'gif'.
+{% endcomment %}
 
+{%- assign file_extension = 'png' -%}
+{%- assign swatch = option -%}
+{%- assign found_option = false -%}
+{%- assign is_color = false -%}
+{%- assign option_index = 0 -%}
 
+{% for option in product.options %}
+  {% if option == swatch %}
+    {%- assign found_option = true -%}
+    {%- assign option_index = forloop.index0 -%}
+    {%- assign downcased_option = swatch | downcase -%}
 
-
-
-
-<form action="/cart/add" method="post" enctype="multipart/form-data" >
-
-<div class="flex_prducts">
-                <div class="product-price">{{ product.price | money }}</div>
-
-              <div class="colors">      
-								 
-            
-
-    {% for option in product.options %}
-    {% if option contains 'Color' %}
-    {% assign index = forloop.index0 %}
-    {% assign colorlist = '' %}
-    {% assign color = '' %}
-    {% assign option_count = 0 %}
-    {% for variant in product.variants %}
-    {% capture color %}
-    {{ variant.options[index] }}
-    {% endcapture %}
-    {% unless colorlist contains color %}
-    {% assign text = color | handleize %}
-
-    {% if option_count < 3 %}
-
-        <div class="tooltip visually-hidden">
-            {{color}}
-        </div>
-
-       
-      
-      
-      
-                                        <label data-value="{{ text }}" title="{{color}}" 
-                                               class=" color-swatch " data-img="{{ variant.image.src | product_img_url: '800x' }}"
-                                               >      
-                                          
-                                          
-                                          <input type="radio" name="{{ option-name }}-{{ product-handle }}"
-                                               class=" color-swatch  js-radio-button"
-                                             
-                                          value="{{ variant.id }}"
-                                           
-                                               {% if option.selected_value == value %}checked="checked"{% endif %}  
-                                               id="variant--{{ forloop.index0 }}"/>
-                                         
-                                          <span class="swatch"  {%- if text == 'white' -%}border: 1px solid #d1d1d1; {%- endif -%}
-      
-         style=" background-color: {{ color | split: ' ' | last | handle }};"> </span>
-                                         
-								<input type="hidden" name="id" value="{{ variant.id }}" />
-								<input type="hidden" id="quaninty" name="quantity" min="1" value="1" />
-                                            
-
-                                        </label>
-     {% assign option_count = option_count | plus : 1 %}
-
+    {% if downcased_option contains 'color' or downcased_option contains 'colour' %}
+      {%- assign is_color = true -%}
     {% endif %}
+  {% endif %}
+{% endfor %}
 
-    {% capture tempList %}
-    {{ colorlist | append: color | append: ' ' }}
-    {% endcapture %}
+<div class="swatch is-flex is-flex-wrap" data-option-index="{{ option_index }}">
+  <div class="option_title">{{ swatch }}</div>
 
-    {% assign colorlist = tempList %}
+  {%- assign values = '' -%}
+
+  {% for variant in product.variants %}
+    {%- assign value = variant.options[option_index] -%}
+
+    {% unless values contains value %}
+      {%- assign values = values | join: ',' -%}
+      {%- assign values = values | append: ',' | append: value -%}
+      {%- assign values = values | split: ',' -%}
+
+      <input id="swatch-{{ option_index }}-{{ value | replace: ' ', '-' }}-{{ product.id }}{% if section.id %}-{{ section.id }}{% endif %}" type="radio" name="option-{{ option_index }}" aria-label="{{ value | escape }}" tabindex="0" value="{{ value | escape }}"{% if forloop.first %} checked{% endif %} />
+
+      <div tabindex="0"  value="{{ value | escape }}" data-value="{{ value | escape }}" data-id="{{ variant.id }}" class="swatch-element {% if is_color %}color{% endif %} {{ value | handle }}-swatch {% if variant.available %}available{% else %}soldout{% endif %}">
+        {% if is_color %}
+          <div class="tooltip">{{ value }}</div>
+        {% endif %}
+
+        {% if is_color %}
+          <label {% if variant.featured_image %}data-image="{{ variant.featured_image | product_img_url: '600x' }}"{% endif %} for="swatch-{{ option_index }}-{{ value | replace: ' ', '-' }}-{{ product.id }}{% if section.id %}-{{ section.id }}{% endif %}" style="background-image: url({{ value | handle | append: '.' | append: file_extension | asset_img_url: '50x' | prepend: 'https:' }}); background-color: {{ value | split: ' ' | last | handle }};">
+            <img class="crossed-out" src="{{ 'soldout.png' | asset_url }}" aria-label="sold out" alt="sold out"/>
+          </label>
+        {% else %}
+          <label {% if variant.featured_image %}data-image="{{ variant.featured_image | product_img_url: '600x' }}"{% endif %} for="swatch-{{ option_index }}-{{ value | replace: ' ', '-' }}-{{ product.id }}{% if section.id %}-{{ section.id }}{% endif %}">
+            {{ value }}
+            <img class="crossed-out" src="{{ 'soldout.png' | asset_url }}" aria-label="sold out" alt="sold out"/>
+          </label>
+        {% endif %}
+      </div>
     {% endunless %}
-
-    {% endfor %}
-    {% endif %}
-    {% endfor %}
-
-    {% for product_option in product.options_with_values %}
-    {% if product_option.name == 'Color' or product_option.name == 'Colour' %}
-    {% if product_option.values.size > 4 %}
-   
-        <a href="{{ product.url}}" title="More Color">
-            + {{ product_option.values.size | minus : 4 }}
-        </a>
-   
-    {% endif %}
-    {% endif %}
-    {% endfor %}
-
-
-  
-  </div>
-  </div>
-  
-                <!--product add to cart-->
-                <button
-                        class="add-to-cart "
-                        type="submit"
-                        name="add"
-                        data-add-to-cart
-                    >
-
-                    <span data-add-to-cart-text>
-                      
-                           Add To Cart
-                     
-                    </span>
-
-                </button>
-          
-
-            </form>
+  {% endfor %}
+</div>
