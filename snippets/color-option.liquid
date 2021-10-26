@@ -39,7 +39,7 @@ Set the extension of your color files below. Use 'png', 'jpeg', 'jpg' or 'gif'.
       {%- assign values = values | append: ',' | append: value -%}
       {%- assign values = values | split: ',' -%}
 
-      <input data-value={{variant.id}} class="js-radio-button click-{{.variant.id}}" id="swatch-{{ option_index }}-{{ value | replace: ' ', '-' }}-{{ product.id }}{% if section.id %}-{{ section.id }}{% endif %}" type="radio" name="option-{{ option_index }}" aria-label="{{ value | escape }}" tabindex="0" value="{{ value | escape }}"{% if variant == product.selected_or_first_available_variant %} checked{% endif %} />
+      <input data-value={{variant.id}} class="js-radio-button click-{{variant.id}}" id="swatch-{{ option_index }}-{{ value | replace: ' ', '-' }}-{{ product.id }}{% if section.id %}-{{ section.id }}{% endif %}" type="radio" name="option-{{ option_index }}" aria-label="{{ value | escape }}" tabindex="0" value="{{ value | escape }}"{% if variant == product.selected_or_first_available_variant %} checked{% endif %} />
 
       <div tabindex="0"  value="{{ value | escape }}" data-value="{{ value | escape }}" data-id="{{ variant.id }}" class=" swatch-element {% if is_color %}color{% endif %} {{ value | handle }}-swatch {% if variant.available %}available{% else %}soldout{% endif %}">
         {% if is_color %}
@@ -62,8 +62,8 @@ Set the extension of your color files below. Use 'png', 'jpeg', 'jpg' or 'gif'.
   
   <script>
     
-    $("div").on("click", function(e) {
-        $("select").val($(this).data("value"));
+    $(".click-{{.variant.id}}").on("click", function(e) {
+        $("select-{{v.id}}").val($(this).data("value"));
     });
   </script>
   {% endfor %}
