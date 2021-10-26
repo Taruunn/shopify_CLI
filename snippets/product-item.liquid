@@ -31,6 +31,9 @@ endif
           {% form 'product', product  %}
         
       {% for option in product.options %}
+        <input type="hidden" name="form_type" value="product">
+        <input type="hidden" name="utf8" value="✓">
+        <input type="hidden" id="quaninty" name="quantity" min="1" value="1" />
         {% render 'color-option',
           option: option,
           product: product
