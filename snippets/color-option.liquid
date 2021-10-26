@@ -55,7 +55,7 @@
     {% for product_option in product.options_with_values %}
     {% if product_option.name == 'Color' or product_option.name == 'Colour' %}
     {% if product_option.values.size > 4 %}
-    <span class="item-swatch-more">
+    <span class="item-swatch-more" id="myBtn">
        
             + {{ product_option.values.size | minus : 4 }}
        
@@ -63,4 +63,72 @@
     {% endif %}
     {% endif %}
     {% endfor %}
+  
+
+
+
+
+<div id="myModal" class="modal">
+
+
+  <div class="modal-content">
+    <span class="close">&times;</span>
+ 
+    
+{%- assign file_extension = 'png' -%}
+{%- assign swatch = option -%}
+{%- assign found_option = false -%}
+{%- assign is_color = false -%}
+{%- assign option_index = 0 -%}
+   {% assign option_count = 0 %}
+{% for option in product.options %}
+  {% if option == swatch %}
+    {%- assign found_option = true -%}
+    {%- assign option_index = forloop.index0 -%}
+    {%- assign downcased_option = swatch | downcase -%}
+
+    {% if downcased_option contains 'color' or downcased_option contains 'colour' %}
+      {%- assign is_color = true -%}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+<div id="SingleOptionSelector-0" data-option-index="{{ option_index }}">
+  <div class="option_title visually-hidden">{{ swatch }}</div>
+
+  {%- assign values = '' -%}
+
+  {% for variant in product.variants %}
+    {%- assign value = variant.options[option_index] -%}
+ 
+    {% unless values contains value %}
+      {%- assign values = values | join: ',' -%}
+      {%- assign values = values | append: ',' | append: value -%}
+      {%- assign values = values | split: ',' -%}
+
+
+  
+      <input class="js-radio-button" id="swatch-{{ option_index }}-{{ value | replace: ' ', '-' }}-{{ product.id }}{% if section.id %}-{{ section.id }}{% endif %}" type="radio" name="id" aria-label="{{ value | escape }}" tabindex="0" value="{{ variant.id }}"{% if variant == product.selected_or_first_available_variant %} checked{% endif %} />
+
+      <div tabindex="0"  value="{{ value | escape }}" data-value="{{ value | escape }}" data-id="{{ variant.id }}" class=" swatch-element {% if is_color %}color{% endif %} {{ value | handle }}-swatch {% if variant.available %}available{% else %}soldout{% endif %}">
+        {% if is_color %}
+          <div class="tooltip visually-hidden">{{ value }}</div>
+        {% endif %}
+
+        {% if is_color %}
+          <label class="swatch color-swatch" {% if variant.featured_image %}data-image="{{ variant.featured_image | product_img_url: '600x' }}"{% endif %} for="swatch-{{ option_index }}-{{ value | replace: ' ', '-' }}-{{ product.id }}{% if section.id %}-{{ section.id }}{% endif %}" style=" background-color: {{ value | split: ' ' | last | handle }};">
+            <img class="crossed-out" src="{{ 'soldout.png' | asset_url }}" aria-label="sold out" alt="sold out"/>
+          </label>
+      
+        {% endif %}
+      </div>
+
+    {% endunless %}
+  {% endfor %}
+    
+  </div>
+
+</div>
+  
+  
 </div>
