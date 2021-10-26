@@ -55,11 +55,11 @@
     {% for product_option in product.options_with_values %}
     {% if product_option.name == 'Color' or product_option.name == 'Colour' %}
     {% if product_option.values.size > 4 %}
-    <li class="item-swatch-more">
-        <a href="{{ product.url}}" title="More Color">
+    <span class="item-swatch-more">
+        <button  title="More Color">
             + {{ product_option.values.size | minus : 4 }}
-        </a>
-    </li>
+        </button>
+    </span>
     {% endif %}
     {% endif %}
     {% endfor %}
