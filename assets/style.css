@@ -88,7 +88,10 @@
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
 }
-    
+    .sticky {
+    position: sticky;
+    top: 5%;
+}
     .product-item{
     padding-right: 20px;
     padding-left: 20px;
