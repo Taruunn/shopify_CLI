@@ -60,4 +60,14 @@ endif
      $('body').removeClass('no-scroll');
 
 });
+  
+   $('.mobile-swatch-{{product.id}}').on('click', function(e) {
+  e.preventDefault();
+  $('.modal-{{ product.id }}').toggleClass('is-visible');
+    $('body').addClass('no-scroll'); 
+  
+  
+
+  
+  
      </script>
