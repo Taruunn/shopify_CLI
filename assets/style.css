@@ -727,3 +727,9 @@ position: absolute;
     padding: 0;
     box-shadow: 0 0 0 1px #000;
 }
+    @media(max-width:767px){
+      
+     .color-option .js-radio-button {
+    display: inline-block;
+} 
+    }
