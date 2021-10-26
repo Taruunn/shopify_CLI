@@ -667,3 +667,8 @@ button .checkmark path {
     align-items: start;
     padding: 20px 50px;
 }
+    
+   .modal-wrapper .swatch-element {
+    display: flex;
+}
+
