@@ -3,7 +3,7 @@
     {% for product_option in product.options_with_values %}
     {% if product_option.name == 'Color' or product_option.name == 'Colour' %}
    
-    <span class="item-swatch-more " >
+    <span class="item-swatch-more desktop-hide" >
        
             {{ product_option.values.size  }}
        
