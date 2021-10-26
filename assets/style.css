@@ -524,3 +524,14 @@ button .checkmark path {
     stroke: #fff;
     opacity: 0;
 }
+  
+   
+     
+    @media(max-width:768px){
+      .half-width-two{
+    margin-top: 9%;
+      height: 100%;
+    position: relative;
+    background: #fff;
+   }
+    }
