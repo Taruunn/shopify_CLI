@@ -55,7 +55,7 @@
     {% for product_option in product.options_with_values %}
     {% if product_option.name == 'Color' or product_option.name == 'Colour' %}
     {% if product_option.values.size > 4 %}
-    <span class="item-swatch-more modal-toggle" >
+    <span class="item-swatch-more modal-toggle-{{product.id}}" >
        
             + {{ product_option.values.size | minus : 4 }}
        
@@ -68,7 +68,7 @@
 
 
 
-  <div class="modal">
+  <div class="modal-{{product.id}} model">
     <div class="modal-overlay modal-toggle"></div>
     <div class="modal-wrapper modal-transition">
       <div class="modal-header">
