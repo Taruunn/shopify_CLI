@@ -1,4 +1,12 @@
-  <form action="{{ routes.cart_url }}" method="post" novalidate data-location="page" id="CartPageForm">
+<div class="one-whole">
+   <div class="main_section">
+      <div class="container">
+         <div class="section_header">
+            <h1> Cart </h1>
+         </div>
+         <div>
+
+<form action="{{ routes.cart_url }}" method="post" novalidate data-location="page" id="CartPageForm">
       <div class="cart__page">
         <div data-products class="cart__page-col">
           {% for item in cart.items %}
@@ -16,7 +24,7 @@
        
 
           <div class="cart__item-row cart__checkout-wrapper">
-            <button type="submit" name="checkout" data-terms-required="{{ settings.cart_terms_conditions_enable }}" class="btn cart__checkout">
+            <button type="submit" name="checkout" class="btn cart__checkout">
             checkout
             </button>
 
@@ -29,3 +37,8 @@
         </div>
       </div>
     </form>
+           
+        </div>
+     </div>
+  </div>
+</div>
