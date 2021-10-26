@@ -63,10 +63,15 @@ Set the extension of your color files below. Use 'png', 'jpeg', 'jpg' or 'gif'.
   <script>
     
     $(".click-{{variant.id}}").on("click", function(e) {
-      var abc = $('select-click').attr("value"));
+      
+      var abc = $("select-click").attr("value");
     
         $('#clcikselect-' + abc).val($(this).data("value"));
     });
+    
+    
+   
+    
   </script>
   {% endfor %}
 </div>
