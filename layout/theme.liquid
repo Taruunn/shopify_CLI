@@ -14,6 +14,10 @@
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
       {%- endunless -%}
        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" ></script>
+     <!-- CSS -->
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<!-- JavaScript -->
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
       <title>
          {{ page_title }}
          {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
@@ -48,22 +52,9 @@
       </main>
     
         {%render 'Ajax-cart' %}
-{{ "slider.js" | asset_url | script_tag }}
-   <script>
-     
-     new Glider(document.querySelector('.glider'), {
-slidesToShow: 5,
-  slidesToScroll: 5,
-  draggable: true,
-  dots: '.dots',
-  arrows: {
-    prev: '.glider-prev',
-    next: '.glider-next'
-  }
-});
-     
+
   
 
-     </script>
+
    </body>
 </html>
