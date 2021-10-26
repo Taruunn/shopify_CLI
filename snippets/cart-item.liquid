@@ -1,6 +1,7 @@
 <div class="cart__item" data-key="{{ product.key }}">
   {%- assign img_url = product | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-  <div class="cart__image">
+ <div class="product-meta">
+      <div class="product-image">
     <a href="{{ product.url }}">
       <img class="lazyload"
           data-src="{{ img_url }}"
@@ -18,7 +19,8 @@
   </div>
   <div class="cart__item-details">
     <div class="cart__item-title">
-      <a href="{{ product.url }}" class="cart__item-name">
+      <a href="{{ product.url }}" class="product-title">
+        
         {{ product.product.title }}
       </a>
       {%- unless product.product.has_only_default_variant -%}
