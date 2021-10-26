@@ -30,6 +30,8 @@
       {%- assign values = values | append: ',' | append: value -%}
       {%- assign values = values | split: ',' -%}
 
+   {% if option_count < 4 %}
+  
       <input class="js-radio-button" id="swatch-{{ option_index }}-{{ value | replace: ' ', '-' }}-{{ product.id }}{% if section.id %}-{{ section.id }}{% endif %}" type="radio" name="id" aria-label="{{ value | escape }}" tabindex="0" value="{{ variant.id }}"{% if variant == product.selected_or_first_available_variant %} checked{% endif %} />
 
       <div tabindex="0"  value="{{ value | escape }}" data-value="{{ value | escape }}" data-id="{{ variant.id }}" class=" swatch-element {% if is_color %}color{% endif %} {{ value | handle }}-swatch {% if variant.available %}available{% else %}soldout{% endif %}">
@@ -44,6 +46,7 @@
       
         {% endif %}
       </div>
+  {% endif %}
     {% endunless %}
   {% endfor %}
 </div>
