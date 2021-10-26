@@ -13,6 +13,7 @@
       {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
       {%- endunless -%}
+       <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" ></script>
       <title>
          {{ page_title }}
          {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
@@ -45,7 +46,7 @@
       <main >
          {{ content_for_layout }}
       </main>
-      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" ></script>
+    
         {%render 'Ajax-cart' %}
 
    
