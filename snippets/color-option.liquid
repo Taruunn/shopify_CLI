@@ -64,15 +64,15 @@
     {% endif %}
     {% endfor %}
   
+</div>
 
 
 
-
-<div id="myModal" class="modal">
-
-
-  <div class="modal-content">
-    <span class="close">&times;</span>
+  <div class="modal">
+    <div class="modal-overlay modal-toggle"></div>
+    <div class="modal-wrapper modal-transition">
+      <div class="modal-header">
+        <div class="modal-close modal-toggle"><svg class="icon-close icon" viewBox="0 0 32 32"><use xlink:href="#icon-close"></use></svg></div>
  
     
 {%- assign file_extension = 'png' -%}
@@ -132,3 +132,5 @@
   
   
 </div>
+  </div>
+
