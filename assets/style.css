@@ -547,6 +547,15 @@ button .checkmark path {
      }
     
     @media(max-width:768px){
+      
+      span.item-swatch-more.desktop-hide {
+    width: fit-content;
+    border: 1px solid #000;
+    padding: 2px 5px;
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
       .desktop-hide{
        display:block; 
       }
