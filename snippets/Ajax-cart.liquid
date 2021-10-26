@@ -76,6 +76,190 @@ $(document).on('click', '.ajax-submit', function (e) {
     });
 
 
+  
+  
+   function refreshCartID () {
+    const cartItem = document.querySelectorAll('.cart__item');
+
+    for (let i = 0; i < cartItem.length; i++) {
+      const lineIndex = i + 1;
+      const dataLineId = cartItem[i].querySelectorAll('[data-line-id]');
+
+      for (let c = 0; c < dataLineId.length; c++) {
+        dataLineId[c].dataset.lineId = lineIndex;
+      }
+    }
+  }
+
+  function refreshCart(cart) {
+    $('.cart_count').empty();
+    const $cartBtn = $('.cart_count');
+    const value = $cartBtn.text() || '0';
+    let cartItemsHTML = "";
+    let cartDiscountsHTML = "";
+    let cartActionHTML = "";
+    let cartSavingsHTML = "";
+    const $cartForm = $('[data-cart-form]');
+    let productHasSale = false;
+    let productCompareAtPrice = 0;
+    let productFinalPrice = 0;
+
+    $cartForm.data('total-discount', cart.total_discount);
+
+    $cartBtn.text(value.replace(/[0-9]+/, cart.item_count));
+
+    if (cart.item_count === 0) {
+      $('.js-empty-cart__message').removeClass('hidden');
+      $cartForm.addClass('hidden');
+    } else {
+      $('.js-empty-cart__message').addClass('hidden');
+      $cartForm.removeClass('hidden');
+
+      let totalSaving = 0; // adding counter variables for total cart savings
+      let saving = 0;
+
+      $.each(cart.items, (index, item) => {
+        const itemDiscounts = item.discounts;
+        let discountMessage = '';
+
+        for (let i = 0; i < itemDiscounts.length; i++) {
+          const { title } = itemDiscounts[i];
+          discountMessage = `<p class="notification-discount meta">${title}</p>`;
+        }
+        const lineID = index + 1;
+
+        cartItemsHTML += `<li class="mini-cart__item" data-cart-item data-line-id="${lineID}" data-variant-id="${item.id}">`
+          + `<a href="${item.url}">`;
+        if (item.image) {
+          cartItemsHTML += `${'<div class="cart_image">'
+              + '<img src="'}${item.image.replace(/(\.[^.]*)$/, '_compact$1').replace('http:', '')}" alt="${htmlEncode(item.title)}" />`
+            + '</div></a>';
+        }
+
+        cartItemsHTML += `<div class="mini-cart__item-content"><div class="mini-cart__item-title"><a href="${item.url}">${item.title}</a>`;
+
+        if (item.properties) {
+          $.each(item.properties, (title, value) => {
+            if (value) {
+              cartItemsHTML += `<div class="line-item">${title}: ${value} </div>`;
+            }
+          });
+        }
+
+        cartItemsHTML += '</div><div class="mini-cart__item-price">';
+
+        $.ajax({
+          dataType: 'json',
+          async: false,
+          cache: false,
+          url: `/products/${item.handle}.js`,
+          success(data) {
+            let productData = data;
+            // If item has more than one variant, need to make sure we are pulling data from the correct variant
+            if (productData.variants) {
+              const itemVariants = productData.variants;
+              if (itemVariants.length > 1) {
+                for (let v = 0; v < itemVariants.length; v++) {
+                  if (itemVariants[v].id === item.id) {
+                    productData = itemVariants[v];
+                  }
+                }
+              }
+            }
+
+            // If compare at price exists then item is on sale
+            if (productData.compare_at_price) {
+              if (productData.compare_at_price > productData.price) {
+                productHasSale = true;
+                productCompareAtPrice = productData.compare_at_price;
+                productFinalPrice = productData.price;
+              }
+            } else {
+              // Check required for non-sale items
+              productHasSale = false;
+            }
+          },
+        });
+
+        if (productHasSale === true) {
+          // puts the slash through the old item price
+          const itemPrice = `${window.Shopify.formatMoney(productFinalPrice, $('body').data('money-format'))} </span><span class="money was_price">${window.Shopify.formatMoney(productCompareAtPrice, $('body').data('money-format'))}</span>`;
+          cartItemsHTML += `<span class="money sale">${itemPrice}</strong>`;
+
+          // Total savings
+          saving = (productCompareAtPrice - productFinalPrice) * item.quantity;
+          totalSaving = saving + totalSaving;
+        } else if (item.price > item.final_price) {
+          // puts the slash through the old item price
+          const itemPrice = `${window.Shopify.formatMoney(item.final_price, $('body').data('money-format'))} </span><span class="money was_price">${window.Shopify.formatMoney(item.price, $('body').data('money-format'))}</span>`;
+          cartItemsHTML += `<span class="money sale">${itemPrice}</strong>`;
+        } else {
+          const itemPrice = window.Shopify.formatMoney(item.price, $('body').data('money-format'));
+          if (item.price > 0) {
+            cartItemsHTML += `<span class="money">${itemPrice}</span></strong>`;
+          } else {
+            cartItemsHTML += `<span>${window.Shopify.translation.cart_free_text}</span></strong>`;
+          }
+        }
+
+        cartItemsHTML += '</div>';
+
+        // Unit price
+
+        if (item.unit_price_measurement && item.price > 0) {
+          let unitPriceMeasurementReferenceValue = '';
+
+          if (item.unit_price_measurement.reference_value !== 1) {
+            unitPriceMeasurementReferenceValue = item.unit_price_measurement.reference_value;
+          }
+
+          cartItemsHTML += `<p class="mini-cart__unit-price">${item.unit_price_measurement.quantity_value}${item.unit_price_measurement.quantity_unit} | ${Shopify.formatMoney(item.unit_price, $('body').data('money-format'))} / ${unitPriceMeasurementReferenceValue}${item.unit_price_measurement.reference_unit}</p>`;
+        }
+
+        if (item.price > item.final_price) {
+          cartItemsHTML += discountMessage;
+        }
+
+        cartItemsHTML += '<div class="product-quantity-box">';
+        cartItemsHTML += '<span class="ss-icon product-minus js-change-quantity" data-func="minus"><span class="icon-minus"></span></span>';
+        cartItemsHTML += `<input type="number" min="0" class="quantity" name="updates[]" id="updates_${item.id}" value="${item.quantity}" data-cart-quantity-input="mini-cart" />`;
+        cartItemsHTML += '<span class="ss-icon product-plus js-change-quantity" data-func="plus"><span class="icon-plus"></span></span>';
+        cartItemsHTML += '</div></div></div>';
+        cartItemsHTML += `<a href="/cart/change?line=${lineID}&amp;quantity=0" class="js-cart-remove-btn cart__remove-btn" data-line-id="${lineID}" data-remove-item="mini-cart"><span class="remove-icon"></span></a>`;
+      });
+
+      const cartDiscounts = cart.cart_level_discount_applications;
+
+      for (let i = 0; i < cartDiscounts.length; i++) {
+        const amount = window.Shopify.formatMoney(cartDiscounts[i].total_allocated_amount, $('body').data('money-format'));
+        const { title } = cartDiscounts[i];
+
+        cartDiscountsHTML += `<span class="cart_discounts--title">${title}</span>`;
+        cartDiscountsHTML += '<span class="cart_discounts--price">';
+        cartDiscountsHTML += `-<span class="money">${amount}</span></span>`;
+      }
+
+      cartActionHTML += `<span class="right"><span class="money">${window.Shopify.formatMoney(cart.total_price, $('body').data('money-format'))}</span></span> <span>${Shopify.translation.cart_subtotal_text}</span>`;
+      totalSaving += cart.total_discount;
+      if (window.Shopify.theme_settings.display_savings && totalSaving > 0) {
+        cartSavingsHTML = `<span class="right"><span class="money">${window.Shopify.formatMoney(totalSaving, $('body').data('money-format'))}</span></span>`
+            + `<span>${window.Shopify.translation.cart_savings_text}</span>`;
+      } else {
+        cartSavingsHTML = '';
+      }
+    }
+
+    $('.js-cart_items').html(cartItemsHTML);
+    $('.js-cart_discounts').html(cartDiscountsHTML);
+    $('.js-cart_subtotal').html(cartActionHTML);
+    $('.js-cart_savings').html(cartSavingsHTML);
+
+    // Converting the currencies
+    if (window.Currency.show_multiple_currencies) {
+      window.currencyConverter.convertCurrencies();
+    }
+  }
+
 
 </script>
 
