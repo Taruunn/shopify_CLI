@@ -685,7 +685,7 @@ position: absolute;
     body.no-scroll {
     overflow: hidden;
 }
-    .no-margin{
+    .no-margin button{
       
      margin:0 
     }
