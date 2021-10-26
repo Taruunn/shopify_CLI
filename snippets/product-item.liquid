@@ -37,7 +37,7 @@ endif
         %}
          {% endfor %}
 
-        <button type="button" name="add" class="add_to_cart add-to-cart ajax-submit" data-label="Add to Cart"> <span class="text animated fadeInDown">Add to Cart</span> <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32" class="checkmark"> <path fill="none" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"></path></svg></button> 
+        <button  type="button" name="add" class="add_to_cart add-to-cart ajax-submit submit-{{product.id}}" data-label="Add to Cart"> <span class="text animated fadeInDown">Add to Cart</span> <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32" class="checkmark"> <path fill="none" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"></path></svg></button> 
        {% endform %}
         
       </div>
@@ -45,25 +45,19 @@ endif
 </div>
 
 <script>
-  $('.modal-toggle-{{product.id}}').on('click', function(e) {
+  $('.modal-toggle-{{ product.id }}').on('click', function(e) {
   e.preventDefault();
-  $('.modal-{{product.id}}').toggleClass('is-visible');
-    $('body').addClass('no-scroll');
-    
-    
-    
-    
-   
-});
+  $('.modal-{{ product.id }}').toggleClass('is-visible');
+    $('body').addClass('no-scroll'); 
   
+   var $button = $('.submit-{{product.id}}').clone();
+  $('.add-{{product.id}}').html($button);
+  
+});
     $('.modal-close').on('click', function(e) {
   e.preventDefault();
-  $('.modal-{{product.id}}').removeClass('is-visible');
+  $('.modal-{{ product.id }}').removeClass('is-visible');
      $('body').removeClass('no-scroll');
-    
-    
-    
-    
-   
+
 });
      </script>
