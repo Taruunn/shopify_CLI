@@ -48,7 +48,12 @@
       </main>
     
         {%render 'Ajax-cart' %}
-
+<script>
+  $('.modal-toggle').on('click', function(e) {
+  e.preventDefault();
+  $('.modal').toggleClass('is-visible');
+});
+     </script>
    
    </body>
 </html>
