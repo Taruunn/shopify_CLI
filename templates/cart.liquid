@@ -8,14 +8,14 @@
    <div class="container">
 <form action="{{ routes.cart_url }}" method="post" novalidate data-location="page" id="CartPageForm">
       <div class="cart__page">
-         <div class="flex_prducts">
+         <div class="flex_prducts half-width">
           {% for item in cart.items %}
             {%- render 'cart-item', product: item -%}
           
           
           {%- endfor -%}
         </div>
-        <div class="cart__page-col">
+        <div class="half-width">
           <div class="cart__item-sub cart__item-row">
         
             <div data-subtotal>{{ cart.total_price | money }}</div>
