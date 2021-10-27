@@ -81,6 +81,7 @@ body {
 		-ms-flex: 0 0 calc(33% - 40px);
 		flex: 0 0 calc(33% - 40px);
 		max-width: calc(33% - 40px);
+      width:33.33%;
 	}
 	.full--five {
 		-webkit-box-flex: 0;
