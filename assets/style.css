@@ -1120,7 +1120,5 @@ px
       .header__cart a.js-ajax-cart-drawer-trigger {
     display: flex;
     justify-content: flex-end;
-    padding: 20
-px
- 0;
+    padding: 20px;
 }
