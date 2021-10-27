@@ -1101,6 +1101,15 @@ span.item-swatch-more {
 px
  0;
 }
+      li.menu-link {
+    list-style: none;
+    font-weight: 500;
+    color: #000;
+}
+      a {
+    text-decoration: none;
+    color: #000;
+}
       
       .cart-drawer__item-list .cart__item.small--one.medium--three.full--two.product-item {
     width: 100%;
@@ -1122,3 +1131,21 @@ px
     justify-content: flex-end;
     padding: 20px;
 }
+      
+      ul.menu {
+  display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+      li.menu-link {
+    list-style: none;
+    font-weight: 500;
+    color: #000;
+    padding-left: 30
+px
+;
+}
+      .main-menu, .header__cart a.js-ajax-cart-drawer-trigger {
+    flex: 1 1 auto;
+}
+
