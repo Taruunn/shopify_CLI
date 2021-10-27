@@ -6,7 +6,7 @@
       "163507133360314ebf": {
         "type": "Collections",
         "settings": {
-          "title": "Featured",
+          "title": "Recommended for you",
           "show_slider": false,
           "featured_products": "featured-collection",
           "per_row": 4,
@@ -16,7 +16,7 @@
       "163532827238a2a207": {
         "type": "Collections",
         "settings": {
-          "title": "Featured collection",
+          "title": "Recommended for you",
           "show_slider": true,
           "featured_products": "frontpage",
           "per_row": 3,
