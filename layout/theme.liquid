@@ -88,6 +88,15 @@ for ( var i=0, len = galleryElems.length; i < len; i++ ) {
 		});
 	}
 });
+  
+  
+  
+  $('.ajax-cart-drawer .modal-close').on('click', function(e) {
+  e.preventDefault();
+  $('.ajax-cart__drawer').removeClass('is-open');
+     $('body').removeClass('no-scroll');
+
+});
      </script>
 
    </body>
