@@ -59,15 +59,35 @@
 for ( var i=0, len = galleryElems.length; i < len; i++ ) {
   var galleryElem = galleryElems[i];
   new Flickity( galleryElem, {
-   contain: true,
- prevNextButtons: true,
-freeScroll: false,
-wrapAround: true,
-  
-      pageDots: false
+  contain: false,
+				prevNextButtons: true,
+				freeScroll: true,
+				wrapAround: true,
+				cellAlign: 'left',
+				autoplay: true,
+				autoPlay: 3500,
+				pageDots: true
      
   });
 }
+  
+  document.addEventListener("shopify:section:load", function(event) {
+	var galleryElems = document.querySelectorAll('.multi_slider');
+	for (var i = 0, len = galleryElems.length; i < len; i++) {
+		var galleryElem = galleryElems[i];
+		new Flickity(galleryElem, {
+           contain: false,
+				prevNextButtons: true,
+				freeScroll: true,
+				wrapAround: true,
+				cellAlign: 'left',
+				autoplay: true,
+				autoPlay: 3500,
+				pageDots: true
+
+		});
+	}
+});
      </script>
 
    </body>
