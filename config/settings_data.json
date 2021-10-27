@@ -8,7 +8,7 @@
         "settings": {
           "title": "Featured",
           "featured_products": "featured-collection",
-          "per_row": 4,
+          "per_row": 3,
           "total_product": 7
         }
       }
