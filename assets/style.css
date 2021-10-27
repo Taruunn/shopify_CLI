@@ -1149,3 +1149,8 @@ px
     flex: 1 1 auto;
 }
 
+.header__cart.main_section.container {
+    padding: 38
+px
+ 0;
+}
