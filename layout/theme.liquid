@@ -72,7 +72,7 @@ for ( var i=0, len = galleryElems.length; i < len; i++ ) {
 }
   
   document.addEventListener("shopify:section:load", function(event) {
-	var galleryElems = document.querySelectorAll('.multi_slider');
+	var galleryElems = document.querySelectorAll('.main-carousel');
 	for (var i = 0, len = galleryElems.length; i < len; i++) {
 		var galleryElem = galleryElems[i];
 		new Flickity(galleryElem, {
