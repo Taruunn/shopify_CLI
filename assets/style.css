@@ -1081,3 +1081,8 @@ span.item-swatch-more {
     display: flex;
     justify-content: left;
 }
+      span.js-ajax-cart-counter {
+    color: #000;
+    text-decoration: none;
+    padding-left: 4px;
+}
