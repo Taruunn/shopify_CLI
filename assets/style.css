@@ -1105,3 +1105,7 @@ px
     flex: 100%;
     max-width: 100%;
 }
+    .cart-drawer__item-list  .product-item img {
+    width: 70%;
+    object-fit: cover;
+}
