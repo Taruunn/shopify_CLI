@@ -7,14 +7,26 @@
         "type": "Collections",
         "settings": {
           "title": "Featured",
+          "show_slider": false,
           "featured_products": "featured-collection",
           "per_row": 4,
           "total_product": 10
         }
+      },
+      "163532827238a2a207": {
+        "type": "Collections",
+        "settings": {
+          "title": "Featured collection",
+          "show_slider": true,
+          "featured_products": "frontpage",
+          "per_row": 4,
+          "total_product": 4
+        }
       }
     },
     "content_for_index": [
-      "163507133360314ebf"
+      "163507133360314ebf",
+      "163532827238a2a207"
     ]
   },
   "presets": {
