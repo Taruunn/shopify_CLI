@@ -10,7 +10,7 @@
         </div>
      
         
-               <div class="one-whole {% if section.settings.show_slider %}main-carousel {%endif%}">
+               <div class="one-whole {% if section.settings.show_slider %}main-carousel {%else%}container{%endif%}">
                   {% liquid
                   assign grid_item_width = 'small--one medium--three full--four'
                   case per_row
