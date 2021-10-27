@@ -1098,3 +1098,10 @@ span.item-swatch-more {
 px
  0;
 }
+      
+      .cart-drawer__item-list .cart__item.small--one.medium--three.full--two.product-item {
+    width: 100%;
+    -webkit-box-flex: 0;
+    flex: 100%;
+    max-width: 100%;
+}
